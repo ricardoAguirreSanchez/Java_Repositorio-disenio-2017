@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- Dispacher que atendera las peticiones  -->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- El servlet spring sera el primero en atender la peticion -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- Le indico que solicitud quiero atender .html, si escribo  "/" para todos  -->	
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Indico cual sera la primera vista a ejecutar internamente cuando se ejecute el servidor -->
+	<welcome-file-list>
+		<welcome-file>inicial.jsp</welcome-file>
+	</welcome-file-list>
+	
+
+
+</web-app>
