@@ -15,6 +15,8 @@ public class MiController {
 	
 	@Autowired
 	Servicio servicio;
+	@Autowired
+	Persona persona;
 	
 	@RequestMapping("irHola")
 	public ModelAndView redireccionar()
@@ -28,9 +30,9 @@ public class MiController {
 	@RequestMapping("irMostrar")
 	public String agregar (ModelMap model)
 	{
-		Persona p = servicio.creaTraePersona();
-		model.addAttribute("nombreModel", p.getNombre());
-		model.addAttribute("apellidoModel", p.getApellido());
+		persona = servicio.creaTraePersona();
+		model.addAttribute("nombreModel", persona.getNombre());
+		model.addAttribute("apellidoModel", persona.getApellido());
 		return "exito";
 	}
 
