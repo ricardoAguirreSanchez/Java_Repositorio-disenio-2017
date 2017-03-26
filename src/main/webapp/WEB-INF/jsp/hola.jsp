@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hola, dale click
-	<a href="irFormulario.html">AQUI</a>
+	Hola!!!
 	
 
 </body>
