@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ar.utn.dto.Persona;
+import com.ar.utn.imple.ServicioImple;
 import com.ar.utn.services.Servicio;
 
 
@@ -14,26 +14,22 @@ import com.ar.utn.services.Servicio;
 public class MiController {
 	
 	@Autowired
-	Servicio servicio;
-	@Autowired
-	Persona persona;
+	ServicioImple servicio;
 	
-	@RequestMapping("irHola")
+	// Este metodo redirecciona, para q se muestre la vista consulta.jsp
+	@RequestMapping("iniciarTP")
 	public ModelAndView redireccionar()
 	{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("hola");
+		mv.setViewName("consulta");
 		return mv;
-		  
 	}
 	
-	@RequestMapping("irMostrar")
-	public String agregar (ModelMap model)
-	{
-		persona = servicio.creaTraePersona();
-		model.addAttribute("nombreModel", persona.getNombre());
-		model.addAttribute("apellidoModel", persona.getApellido());
-		return "exito";
-	}
-
+	// Este metodo responde la peticion de consular por filtro
+	
+	
+	
+	// Este metodo responde a la peticion de consultar totales
+	
+	
 }

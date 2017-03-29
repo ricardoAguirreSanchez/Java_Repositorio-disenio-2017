@@ -1,18 +1,14 @@
 package com.ar.utn.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
 
-import com.ar.utn.dto.Persona;
-import com.ar.utn.imple.PersonaDAO;
+import com.ar.utn.dto.CuentaDTO;
 
-@Service
-public class Servicio {
+
+public interface Servicio {
 	
-	@Autowired
-	PersonaDAO per;
-	
-	public Persona creaTraePersona(){
-		return per.createPersona();
-	}
+	public ArrayList<CuentaDTO> consultaCuentasPor(String nombreEmpresa, String periodo, int anio);
+	public ArrayList<CuentaDTO> consultaCuentasTotales();
 }
