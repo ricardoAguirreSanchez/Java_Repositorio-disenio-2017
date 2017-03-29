@@ -17,7 +17,7 @@ public class CuentaDAOimple implements CuentaDAO {
 
 
 	public ArrayList<CuentaDTO> buscarCuentasTotales() {
-		// Aca busca del archivo y arma una lista de cuentas
+		// Buscar el archi
 		return null;
 	}
 

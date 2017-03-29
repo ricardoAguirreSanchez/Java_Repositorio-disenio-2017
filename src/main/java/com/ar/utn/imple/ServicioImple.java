@@ -13,7 +13,7 @@ import com.ar.utn.services.Servicio;
 public class ServicioImple implements Servicio {
 
 	@Autowired
-	CuentaDAOimple cuenta;
+	CuentaDAO cuenta;
 
 	public ArrayList<CuentaDTO> consultaCuentasPor(String nombreEmpresa, String periodo, int anio) {
 

@@ -14,7 +14,7 @@ import com.ar.utn.services.Servicio;
 public class MiController {
 	
 	@Autowired
-	ServicioImple servicio;
+	Servicio servicio;
 	
 	// Este metodo redirecciona, para q se muestre la vista consulta.jsp
 	@RequestMapping("iniciarTP")
@@ -26,7 +26,7 @@ public class MiController {
 	}
 	
 	// Este metodo responde la peticion de consular por filtro
-	
+
 	
 	
 	// Este metodo responde a la peticion de consultar totales
