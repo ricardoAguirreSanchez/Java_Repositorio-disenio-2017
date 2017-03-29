@@ -8,6 +8,6 @@
 </head>
 <body>
 	
-	<jsp:forward page="irHola.html"></jsp:forward>
+	<jsp:forward page="iniciarTP.html"></jsp:forward>
 </body>
 </html>
