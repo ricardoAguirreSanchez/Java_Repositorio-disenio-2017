@@ -26,7 +26,7 @@ public class MiController {
 	}
 	
 	// Este metodo responde la peticion de consular por filtro
-
+	
 	
 	
 	// Este metodo responde a la peticion de consultar totales
