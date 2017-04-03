@@ -5,10 +5,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class CuentaDTO {
 	int id;
+	
+//	  Periodo de semestre, puede ser:
+//	  1: primer semestre
+//	  2: segundo semestre
+//	  3: todo el año
 	int periodo;
+	
 	String nombreCuenta;
+	
 	String nombreEmpresa;
+	
 	int monto;
+	
 	int anio;
 	
 	public int getId() {
