@@ -21,12 +21,12 @@ public class MiController {
 	public ModelAndView redireccionar()
 	{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("consulta");
+		mv.setViewName("usuarioHome");
 		return mv;
 	}
 	
 	// Este metodo responde la peticion de consular por filtro
-
+	
 	
 	
 	// Este metodo responde a la peticion de consultar totales
