@@ -82,7 +82,31 @@ app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunct
 			ocultarLoader('');
 		}
 	});
-	
+	var aside = $('aside');
+	var headerBotonMenu = $('.header_boton_menu');
+	var asideOpciones = $('.aside_opciones>li>a');
+
+	// href en el logo
+	$('.header_logo, .header_logout').click(function() {
+		window.location.href = '';
+	});
+
+	// Botón para desplegar sidebar en tamaños de pantalla chicos
+	headerBotonMenu.click(function() {
+		aside.toggleClass('desplegado');
+		headerBotonMenu.toggleClass('active');
+	});
+
+	asideOpciones.click(function() {
+
+		var padre = $(this).parents('li');
+		var padres = $('aside ul>li');
+
+		if (!padre.hasClass('active')) {
+			agregarClaseActive(padre, padres);
+			cambiarDeOpcion(padre);
+		};
+	});
 	$scope.cargarIndicadores = function(){
 	}
 	
@@ -151,7 +175,7 @@ function cambiarDeOpcion(father) {
 		$('#cuentas').delay(200).fadeIn(200);
 	} else if (father.is('#opcion_indicador')) {
 		$('.wrapper>:not(#indicador)').fadeOut(200);
-		$('#indicador').delay(200).fadeIn(200);
+		$('#indicadores').delay(200).fadeIn(200);
 	} else if (father.is('#opcion_metodologia')) {
 		$('.wrapper>:not(#metodologia)').fadeOut(200);
 		$('#metodologia').delay(200).fadeIn(200);		

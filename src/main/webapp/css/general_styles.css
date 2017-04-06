@@ -699,7 +699,7 @@ aside.desplegado+.wrapper{
 }
 
 .aside_opciones>li.active, .aside_opciones>li.active:hover{
-	background-color: #630101;
+	background-color: #9c0000;
 }
 
 .aside_opciones>li:hover{
@@ -724,7 +724,7 @@ aside.desplegado+.wrapper{
 
 .aside_opciones>li:hover>a{
 	color: #fff;
-	border-color: #64ccf3;
+	border-color: rgba(49, 17, 17, 0.58);
 }
 
 .aside_opciones>li.active>a{
@@ -984,7 +984,7 @@ table {
 }
 
 table thead{
-	border: 1px solid #4181bc;
+	border: 1px solid #000000;
 }
 
 tbody>tr{
@@ -1005,7 +1005,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .table>thead>tr>td, .table>thead>tr>th{
 	padding: 0;
-	background-color: #4181bc;
+	background-color: rgb(109, 0, 0);
 }
 
 #bonos table>thead>tr>th:first-child{
@@ -1134,7 +1134,7 @@ tbody>tr>td>div>span{
 }
 
 .ng-table th.sortable.sort-desc,.ng-table th.sortable.sort-asc{
-	background-color: #4181bc;
+	background-color: #6d0000;
 }
 #tabla_cotizaciones_wrapper>.row, #tabla_solicitudes_wrapper>.row{
 	margin: 0;
@@ -2204,8 +2204,8 @@ form label+label.col-md-8{
 
 .btn.btn-default.ng-scope.active, .btn.btn-default.ng-scope.active:hover,
 .btn.btn-default.ng-scope.active:focus, .btn.btn-default.ng-scope.active:active{
-	background-color: #4181bc;
-	border-color: #4181bc;
+	background-color: #6d0000;
+	border-color: #6d0000;
 	box-shadow: 0 0 0;
 	color: #fff;		
 	outline: none;

@@ -32,7 +32,8 @@
 		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript" src="js/jquery.totemticker.min.js"></script>
     	<script type="text/javascript" src="js/usuarioHome.js"></script>   
-    	<script type="text/javascript" src="js/indicadores.js"></script>    	 
+    	<script type="text/javascript" src="js/indicadores.js"></script>  
+    	<script type="text/javascript" src="js/cuentas.js"></script>    	     	  	 
     		    	
 	</head>
 	<body ng-app="usuarioHome" ng-cloak>
@@ -53,9 +54,9 @@
 			</div>
 			<div>
 				<ul class="aside_opciones">
-					<li id="opcion_cuentas" ng-click="cargarCuentas()"><a href="#cuentas" id="cuentaHref"><div><i class="icon_ba icon_ba_peso"></i></div><span>Cuentas</span></a></li>
+					<li class="active" id="opcion_cuentas" ng-click="cargarCuentas()"><a href="#cuentas" id="cuentaHref"><div><i class="icon_ba icon_ba_peso"></i></div><span>Cuentas</span></a></li>
 					
-					<li class="active" id="opcion_indicador" ng-click="cargarIndicador()"><a href="#indicador"><div><i class="icon_ba icon_ba_cotizacion"></i></div><span>Indicadores</span></a></li>
+					<li id="opcion_indicador" ng-click="cargarIndicador()"><a href="#indicador"><div><i class="icon_ba icon_ba_cotizacion"></i></div><span>Indicadores</span></a></li>
 					
 					<li id="opcion_metodologia" ng-click="cargarMetodologia()"><a href="#metodologia"><div><i class="icon_ba icon_ba_home"></i></div><span>Metodologias</span></a></li>
 					
@@ -66,6 +67,9 @@
 		<!-- FIN ASIDE (SIDEBAR) -->
 
 		<!-- WRAPPER -->
+		<div class="container wrapper">
+			<div class="" ng-include="'views/cuentas.jsp'" id=cuentas></div>
+		</div>
 		<div class="container wrapper">
 			<div class="" ng-include="'views/indicadores.jsp'" id="indicadores"></div>
 		</div>
