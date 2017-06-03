@@ -1,0 +1,54 @@
+/* Estilos */
+.igual, .icon_ba_flecha_igual_rounded_fill{
+	color: #0157a6;
+}
+
+.fondo_celeste{
+	background-color: #9c0000;
+	color: #fff;
+}
+
+.color_celeste{
+	color: #00aeef;
+}
+
+.fondo_azul{
+	background-color: #0057A5;
+	color: #fff;
+}
+
+.fondo_gris{
+	background-color: #f9f9f9;
+}
+
+body{
+	font-family: 'Roboto';
+	font-size: 14px;
+}
+
+table thead>tr>th{
+	background-color: #efefef;
+}
+
+.fa-arrow-circle-down, .color_rojo, .abajo, .icon_ba_flecha_abajo_rounded_fill, .icon_ba_flecha_abajo_rounded{
+	color: #E9573E;
+}
+
+.fa-arrow-circle-up, .color_verde, .arriba, .icon_ba_flecha_arriba_rounded_fill, .icon_ba_flecha_arriba_rounded{
+	color: #A0D468;
+}
+.fa-arrow-circle-up, .color_azul, .arriba, .icon_ba_flecha_igual_rounded_fill, .icon_ba_flecha_igual_rounded{
+	color: #0057a5;
+}
+
+.fondo_verde{
+	background: #A0D468;
+}
+
+.fondo_rojo{
+	background: #E9573E;
+}
+
+h3{
+	color: #666666;
+}
