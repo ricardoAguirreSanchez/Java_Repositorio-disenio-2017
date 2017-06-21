@@ -1,0 +1,37 @@
+import com.utn.model.Metodologia;
+
+// regla para la condicion Maximizar ROE
+rule "Maximizar ROE"
+	
+    when
+        meto: Metodologia(nombre.equals("Ricardo"))
+    then 
+    	meto.setNombre("Ricardo1");
+end
+
+// regla para la condicion Minimizar nivel de deuda
+rule "Minimizar dueda"
+	
+    when
+        
+    then 
+    	
+end
+
+// regla para la condicion Márgenes consistentemente crecientes
+rule "Margenes consistentemente crecientes"
+	
+    when
+        
+    then 
+    	
+end
+
+// regla para la condicion Longevidad
+rule "Longevidad"
+	
+    when
+        
+    then 
+    	
+end
