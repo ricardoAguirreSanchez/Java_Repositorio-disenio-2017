@@ -12,6 +12,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Cuenta;
 import com.utn.model.Metodologia;
+import com.utn.services.implementation.CuentaServiceImplementation;
 
 public class MetodologiaDAO {
 	private ClassLoader classLoader = getClass().getClassLoader();
@@ -30,5 +31,19 @@ public class MetodologiaDAO {
 			e.printStackTrace();
 		}
 		return listaMetodologia;
+	}
+	
+	public Cuenta maximoROE(){
+		Cuenta cuentaGanadora = new Cuenta();
+		CuentaDAO cuentaDAO = new CuentaDAO(); 
+		List<Cuenta> listaCuentas = cuentaDAO.getCuentas();
+		
+		//Comienzo a buscar la mejor cuenta
+		for (Cuenta cuenta: listaCuentas){
+			if(cuentaDAO.totalROEUltimosNAnios(cuenta,10) > cuentaDAO.totalROEUltimosNAnios(cuentaGanadora,10)){
+				cuentaGanadora = cuenta;
+			}
+		}
+		return cuentaGanadora;
 	}
 }

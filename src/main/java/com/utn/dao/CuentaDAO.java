@@ -1,6 +1,7 @@
 package com.utn.dao;
 
 import com.utn.model.Cuenta;
+import com.utn.model.CuentaValores;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Component
@@ -32,6 +34,28 @@ public class CuentaDAO {
 			e.printStackTrace();
 		}
 		return listaCuentas;
+	}
+	
+	public Double totalROEUltimosNAnios(Cuenta cuenta,int ultimosAnios){
+		if (cuenta==null){
+			return (double) 0;
+		}
+		else{
+			Double total = (double) 0;
+			//Fecha actual desglosada:
+	        Calendar fecha = Calendar.getInstance();
+	        int anioActual = fecha.get(Calendar.YEAR);
+	        
+			for(CuentaValores unaCuentaValor : cuenta.getCuentaValores()){
+				if(unaCuentaValor.getFechaFin().getYear() + ultimosAnios <= anioActual){
+					total = total + unaCuentaValor.getRoi();
+				}
+			}
+			
+			return total;
+		}
+
+		
 	}
 
 }

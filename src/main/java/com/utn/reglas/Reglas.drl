@@ -1,12 +1,17 @@
+package com.utn.reglas;
 import com.utn.model.Metodologia;
+import com.utn.reglas.Respuesta;
 
 // regla para la condicion Maximizar ROE
 rule "Maximizar ROE"
 	
     when
-        meto: Metodologia(nombre.equals("Ricardo"))
+        meto: Metodologia(nombre.equals("Ricardo"));
+        resp: Respuesta()
     then 
-    	meto.setNombre("Ricardo1");
+    	meto.setNombre("xxx");
+    	resp.setValor("AAAA");
+    	resp.agregar("gato");
 end
 
 // regla para la condicion Minimizar nivel de deuda
