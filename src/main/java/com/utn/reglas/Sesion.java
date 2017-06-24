@@ -1,9 +1,11 @@
 package com.utn.reglas;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import org.drools.compiler.compiler.DroolsParserException;
 import org.drools.compiler.compiler.PackageBuilder;
 import org.drools.core.RuleBase;
 import org.drools.core.RuleBaseFactory;
@@ -11,7 +13,7 @@ import org.drools.core.WorkingMemory;
 
 public class Sesion {
 
-	public WorkingMemory iniciar() throws Exception {
+	public WorkingMemory iniciar()  {
 
 		PackageBuilder packageBuilder = new PackageBuilder();
 
@@ -19,7 +21,11 @@ public class Sesion {
 		InputStream resourceAsStream = getClass().getResourceAsStream(ruleFile);
 
 		Reader reader = new InputStreamReader(resourceAsStream);
-		packageBuilder.addPackageFromDrl(reader);
+		try {
+			packageBuilder.addPackageFromDrl(reader);
+		} catch (Exception e) {
+			System.out.println("Error al iniciar la sesion");;
+		}
 		org.drools.core.rule.Package rulesPackage = packageBuilder.getPackage();
 		RuleBase ruleBase = RuleBaseFactory.newRuleBase();
 		ruleBase.addPackage(rulesPackage);

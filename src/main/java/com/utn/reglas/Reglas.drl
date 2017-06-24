@@ -1,17 +1,15 @@
 package com.utn.reglas;
 import com.utn.model.Metodologia;
 import com.utn.reglas.Respuesta;
+import com.utn.dao.EmpresaDAO;
 
 // regla para la condicion Maximizar ROE
 rule "Maximizar ROE"
 	
     when
-        meto: Metodologia(nombre.equals("Ricardo"));
-        resp: Respuesta()
+        
     then 
-    	meto.setNombre("xxx");
-    	resp.setValor("AAAA");
-    	resp.agregar("gato");
+    	
 end
 
 // regla para la condicion Minimizar nivel de deuda
@@ -36,7 +34,10 @@ end
 rule "Longevidad"
 	
     when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Longevidad"));
+        respuesta: Respuesta();
         
     then 
-    	
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Longevidad",empresaDAO.getEmpresaMasAntigua());
 end
