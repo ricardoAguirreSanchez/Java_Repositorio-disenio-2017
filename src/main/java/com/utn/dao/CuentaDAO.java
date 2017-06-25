@@ -58,6 +58,28 @@ public class CuentaDAO {
 		
 	}
 
+	public Double totalCostltimosNAnios(Cuenta cuenta, int ultimosAnios) {
+		if (cuenta==null){
+			return (double) 0;
+		}
+		else{
+			Double total = (double) 0;
+			//Fecha actual desglosada:
+	        Calendar fecha = Calendar.getInstance();
+	        int anioActual = fecha.get(Calendar.YEAR);
+	        
+			for(CuentaValores unaCuentaValor : cuenta.getCuentaValores()){
+				if(unaCuentaValor.getFechaFin().getYear() + ultimosAnios <= anioActual){
+					total = total + unaCuentaValor.getCost();
+				}
+			}
+			
+			return total;
+		}
+
+		
+	}
+
 }
 
 

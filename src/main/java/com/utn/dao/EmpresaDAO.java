@@ -61,25 +61,79 @@ public class EmpresaDAO {
 		
 	}
 	
+	//Busca la empresa conun mejor margen=totalPasivo - cost
+	public Empresa getEmpresaMejorMargen(){
+		
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+		
+		//Fecha actual desglosada:
+        Calendar fecha = Calendar.getInstance();
+        int anioActual = fecha.get(Calendar.YEAR);
+        
+        for (Empresa unaEmpresa : listaEmpresas){
+        	if(obtenerMargenTotal(unaEmpresa) > obtenerMargenTotal(empresaGanadora)){
+        		empresaGanadora = unaEmpresa;
+        	}
+        }
+        
+		return empresaGanadora;
+		
+	}
+	
 	//devuelve la empresa con mejor ROE en los ultimos 10 años
-		public Empresa getEmpresaMejorROE(){
-			
-			List<Empresa> listaEmpresas = this.getEmpresas();
-			Empresa empresaGanadora = listaEmpresas.get(0);
-			
-			//Fecha actual desglosada:
-	        Calendar fecha = Calendar.getInstance();
-	        int anioActual = fecha.get(Calendar.YEAR);
-	        
-	        for (Empresa unaEmpresa : listaEmpresas){
-	        	if(obtenerROETotal(unaEmpresa) > obtenerROETotal(empresaGanadora)){
-	        		empresaGanadora = unaEmpresa;
-	        	}
-	        }
-	        
-			return empresaGanadora;
+	public Empresa getEmpresaMejorROE() {
+
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+
+		// Fecha actual desglosada:
+		Calendar fecha = Calendar.getInstance();
+		int anioActual = fecha.get(Calendar.YEAR);
+
+		for (Empresa unaEmpresa : listaEmpresas) {
+			if (obtenerROETotal(unaEmpresa) > obtenerROETotal(empresaGanadora)) {
+				empresaGanadora = unaEmpresa;
+			}
+		}
+
+		return empresaGanadora;
+
+	}
+	
+	//devuelve la empresa con menor deuda
+	public Empresa getEmpresaMenorDeuda() {
+
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+		Double deuda = empresaGanadora.getTotalPasivo() / empresaGanadora.getCapitalContable();
+		for (Empresa unaEmpresa : listaEmpresas) {
+			if (deuda > (unaEmpresa.getTotalPasivo() / unaEmpresa.getCapitalContable())) {
+				empresaGanadora = unaEmpresa;
+			}
+		}
+
+		return empresaGanadora;
+
+	}	
+	
+	private Double obtenerMargenTotal(Empresa unaEmpresa) {
+		Double costTotal = (double) 0;
+		CuentaDAO cuentaDAO = new CuentaDAO();
+		List<Cuenta> listaCuentas = cuentaDAO.getCuentas();
+		for(Long idCuenta : unaEmpresa.getListaIdCuentas()){
+			//busca para cada una de las cuentas, las q pertenecen a la empresa y suma sus cost
+			for (Cuenta unaCuenta:listaCuentas){
+				if (unaCuenta.getId()==idCuenta){
+					costTotal = costTotal + cuentaDAO.totalCostltimosNAnios(unaCuenta, 10);
+				}
+			}
 			
 		}
+		return unaEmpresa.getTotalPasivo() - costTotal;
+	}
+
+		
 
 		private Double obtenerROETotal(Empresa unaEmpresa) {
 			Double roeTotal = (double) 0;

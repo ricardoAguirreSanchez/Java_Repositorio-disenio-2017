@@ -4,7 +4,7 @@ import com.utn.reglas.Respuesta;
 import com.utn.dao.EmpresaDAO;
 
 // regla para la condicion Maximizar ROE
-// Busca la empresa que sumando los ROE de todas sus cuentas sea la mejor
+// Busca la empresa que sumando los ROE de todas sus cuentas sea la mejor de los ultimos 10 años
 rule "Maximizar ROE"
 	
     when
@@ -18,25 +18,34 @@ rule "Maximizar ROE"
 end
 
 // regla para la condicion Minimizar nivel de deuda
-rule "Minimizar dueda"
+// Busca la empresa con el menor nivel de deuda, entiendase nivel de deuda por la division de totalPasivo / capitalContable
+rule "Minimizar deuda"
 	
     when
-        
+        metodologia: Metodologia(metodologia.getListaCondiciones().contains("Minimizar deuda"));
+        respuesta: Respuesta();
     then 
-    	
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Minimizar deuda",empresaDAO.getEmpresaMenorDeuda());
 end
 
 // regla para la condicion Márgenes consistentemente crecientes
-rule "Margenes consistentemente crecientes"
+// Busca la empresa con mejor margen de ganancia, entendimos margen de ganancia como el total pasivo menos los costos 
+// (costos q estan por cuenta, tomando en cuenta el periodo de los ultimos 10 años)
+rule "Margenes de ganancia"
 	
     when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Margenes de ganancia"));
+        respuesta: Respuesta();
         
-    then 
+    then
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Margenes de ganancia",empresaDAO.getEmpresaMejorMargen());
     	
 end
 
 // regla para la condicion Longevidad
-// Busca la empreza mas antigua entre todas y ademas q como minimo pasen los 10 años
+// Busca la empresa mas antigua entre todas y ademas q como minimo pasen los 10 años
 rule "Longevidad"
 	
     when
