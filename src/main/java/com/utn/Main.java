@@ -13,12 +13,14 @@ import org.drools.compiler.compiler.*;
 import org.drools.core.*;
 import org.drools.core.WorkingMemory;
 
+import com.utn.dao.CatalogoReglasDAO;
 import com.utn.dao.MetodologiaDAO;
 import com.utn.model.Cuenta;
 import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
 import com.utn.reglas.Respuesta;
 import com.utn.reglas.Sesion;
+import com.utn.services.implementation.CatalogoReglasImplementation;
 import com.utn.services.implementation.MetodologiaServiceImplementation;
 
 public class Main {
@@ -83,6 +85,29 @@ public class Main {
 		//----------------------------------
 		
 		
+		//PARA CARGAR/CREAR LAS METODOLOGIAS USANDO REGLAS EXISTENTES EN LA BASE
+		
+		//pido todas las reglas
+		CatalogoReglasDAO catalogoDAO = new CatalogoReglasDAO();
+		CatalogoReglasImplementation catalogoReglas = new CatalogoReglasImplementation(catalogoDAO);
+		catalogoReglas.getReglas();
+		
+		//muesto al usuario esta lista de reglas y dejo elegir las q quiera y un nombre para la metodologia
+		//cargo las reglas y el nombre de la metodologia en un objeto METODOLOGIA
+		//guardo la metodologia
+		Metodologia metodologiaNueva = new Metodologia();
+		metodologiaNueva.setNombre("nombre que quiero");
+		
+		ArrayList<String > listaCondicionesNuevas = new ArrayList<>();
+		listaCondicionesNuevas.add("Maximizar ROE");
+		listaCondicionesNuevas.add("Maxima cantidad cuentas");
+		metodologiaNueva.setListaCondiciones(listaCondiciones3);
+		//guardo la metodologia
+		msi3.setMetodologia(metodologiaNueva);
+		
+		//muestro todas la metodologias del sistema
+		msi3.getMetodologias();
+		System.out.println(msi3.getMetodologias());
 	}
 
 }

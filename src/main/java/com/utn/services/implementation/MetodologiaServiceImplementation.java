@@ -49,5 +49,9 @@ public class MetodologiaServiceImplementation implements MetodologiaService{
 	public List<Metodologia> getMetodologias() {
 		return metodologiaDAO.getMetodologias();
 	}
+	
+	public void setMetodologia(Metodologia metodologia){
+		metodologiaDAO.setMetodologia(metodologia);
+	}
 
 }

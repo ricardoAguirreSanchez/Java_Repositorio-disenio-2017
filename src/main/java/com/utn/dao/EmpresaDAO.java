@@ -115,7 +115,56 @@ public class EmpresaDAO {
 
 		return empresaGanadora;
 
-	}	
+	}
+	
+	
+	//devuelve la empresa con menor capital contable
+	public Empresa getEmpresaMenorCapitalContable() {
+
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+		for (Empresa unaEmpresa : listaEmpresas) {
+			if (empresaGanadora.getCapitalContable()>unaEmpresa.getCapitalContable()) {
+				empresaGanadora = unaEmpresa;
+			}
+		}
+
+		return empresaGanadora;
+
+	}
+	
+	
+	
+	//devuelve la empresa con maxima cantidad cuentas
+	public Empresa getEmpresaMaximaCantidadCuentas() {
+
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+		for (Empresa unaEmpresa : listaEmpresas) {
+			if (empresaGanadora.getListaIdCuentas().size()<unaEmpresa.getListaIdCuentas().size()) {
+				empresaGanadora = unaEmpresa;
+			}
+		}
+
+		return empresaGanadora;
+
+	}
+	
+	//devuelve la empresa con el total pasivo maximo
+	public Empresa getEmpresaMaximoTotalPasivo() {
+
+		List<Empresa> listaEmpresas = this.getEmpresas();
+		Empresa empresaGanadora = listaEmpresas.get(0);
+		for (Empresa unaEmpresa : listaEmpresas) {
+			if (empresaGanadora.getTotalPasivo()<unaEmpresa.getTotalPasivo()) {
+				empresaGanadora = unaEmpresa;
+			}
+		}
+
+		return empresaGanadora;
+
+	}
+	
 	
 	private Double obtenerMargenTotal(Empresa unaEmpresa) {
 		Double costTotal = (double) 0;

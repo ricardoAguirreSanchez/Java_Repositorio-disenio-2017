@@ -56,3 +56,44 @@ rule "Longevidad"
     	EmpresaDAO empresaDAO = new EmpresaDAO();
     	respuesta.agregar("Longevidad",empresaDAO.getEmpresaMasAntigua());
 end
+
+
+
+
+//REGLAS EXTRAS POR SI LO USAMOS
+
+//Busca la empresa con total pasivo maximo
+rule "Maximo total pasivo"
+	
+    when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Maximo total pasivo"));
+        respuesta: Respuesta();
+        
+    then 
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Maximo total pasivo",empresaDAO.getEmpresaMaximoTotalPasivo());
+end
+
+//Busca la empresa con mas cantidad de cuentas
+rule "Maxima cantidad cuentas"
+	
+    when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Maxima cantidad cuentas"));
+        respuesta: Respuesta();
+        
+    then 
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Maxima cantidad cuentas",empresaDAO.getEmpresaMaximaCantidadCuentas());
+end
+
+//Busca la empresa con menor capital contable
+rule "Menor capital contable"
+	
+    when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Menor capital contable"));
+        respuesta: Respuesta();
+        
+    then 
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Menor capital contable",empresaDAO.getEmpresaMenorCapitalContable());
+end
