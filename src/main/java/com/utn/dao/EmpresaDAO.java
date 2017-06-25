@@ -60,4 +60,40 @@ public class EmpresaDAO {
 		return empresaGanadora;
 		
 	}
+	
+	//devuelve la empresa con mejor ROE en los ultimos 10 años
+		public Empresa getEmpresaMejorROE(){
+			
+			List<Empresa> listaEmpresas = this.getEmpresas();
+			Empresa empresaGanadora = listaEmpresas.get(0);
+			
+			//Fecha actual desglosada:
+	        Calendar fecha = Calendar.getInstance();
+	        int anioActual = fecha.get(Calendar.YEAR);
+	        
+	        for (Empresa unaEmpresa : listaEmpresas){
+	        	if(obtenerROETotal(unaEmpresa) > obtenerROETotal(empresaGanadora)){
+	        		empresaGanadora = unaEmpresa;
+	        	}
+	        }
+	        
+			return empresaGanadora;
+			
+		}
+
+		private Double obtenerROETotal(Empresa unaEmpresa) {
+			Double roeTotal = (double) 0;
+			CuentaDAO cuentaDAO = new CuentaDAO();
+			List<Cuenta> listaCuentas = cuentaDAO.getCuentas();
+			for(Long idCuenta : unaEmpresa.getListaIdCuentas()){
+				//busca para cada una de las cuentas, las q pertenecen a la empresa y suma sus roes
+				for (Cuenta unaCuenta:listaCuentas){
+					if (unaCuenta.getId()==idCuenta){
+						roeTotal = roeTotal + cuentaDAO.totalROEUltimosNAnios(unaCuenta, 10);
+					}
+				}
+				
+			}
+			return roeTotal;
+		}
 }

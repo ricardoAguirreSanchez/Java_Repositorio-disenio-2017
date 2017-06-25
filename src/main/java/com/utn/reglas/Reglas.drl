@@ -4,11 +4,16 @@ import com.utn.reglas.Respuesta;
 import com.utn.dao.EmpresaDAO;
 
 // regla para la condicion Maximizar ROE
+// Busca la empresa que sumando los ROE de todas sus cuentas sea la mejor
 rule "Maximizar ROE"
 	
     when
+    	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Maximizar ROE"));
+        respuesta: Respuesta();
         
     then 
+    	EmpresaDAO empresaDAO = new EmpresaDAO();
+    	respuesta.agregar("Maximizar ROE",empresaDAO.getEmpresaMejorROE());
     	
 end
 
@@ -31,6 +36,7 @@ rule "Margenes consistentemente crecientes"
 end
 
 // regla para la condicion Longevidad
+// Busca la empreza mas antigua entre todas y ademas q como minimo pasen los 10 años
 rule "Longevidad"
 	
     when

@@ -9,10 +9,10 @@ public class Empresa {
 	private String nombre;
 	
 	
-	public ArrayList<Long> getListaNombreCuentas() {
+	public ArrayList<Long> getListaIdCuentas() {
 		return listaIdCuentas;
 	}
-	public void setListaNombreCuentas(ArrayList<Long> listaNombreCuentas) {
+	public void setListaIdCuentas(ArrayList<Long> listaNombreCuentas) {
 		this.listaIdCuentas = listaNombreCuentas;
 	}
 	public Date getFechaCreacion() {
@@ -27,5 +27,6 @@ public class Empresa {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	
 }

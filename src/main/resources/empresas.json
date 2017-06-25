@@ -3,15 +3,13 @@
   	"nombre":"AAAA",
     "fechaCreacion":"2004-01-01",
     "listaIdCuentas": [
-        1,
-		2]
+        1]
   },
   {
   	"nombre":"BBBB",
     "fechaCreacion":"1983-01-01",
     "listaIdCuentas": [
-        1,
-		2]
+        2]
   },
   {
   	"nombre":"CCCC",
