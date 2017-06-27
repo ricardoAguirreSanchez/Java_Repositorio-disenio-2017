@@ -38,6 +38,24 @@
 			<div ng-hide="cuentasTable.data.length">Usted no posee cuentas.</div>
 		</div>
 	</div>
+	<div>
+		<div>
+			<button ng-click="agregar=true">Agregar Cuenta</button>
+			<div ng-show="agregar == true">
+			<div>
+				<span>Nombre:</span>
+				<input type="text" placeholder="Nombre Cuenta" class="form-control" ng-model="cuenta.nombre">
+			</div>
+			<div>
+				<span>Tipo:</span>
+				<input type="text" placeholder="Nombre Cuenta" class="form-control" ng-model="cuenta.tipo">
+			</div>
+			<div>
+				<button ng-click="agregarCuenta(cuenta)">Agregar</button>
+			</div>
+			</div>
+		</div>
+	</div>
 </div>
 <div ng-controller="cuentaPageController"></div>
 <!-- FIN INDICADORES -->
