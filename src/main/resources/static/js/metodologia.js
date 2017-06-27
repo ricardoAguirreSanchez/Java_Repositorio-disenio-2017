@@ -2,24 +2,20 @@ app.controller('metodologiaController',['$rootScope','$scope','ngTableParams', '
 	function($rootScope, $scope, ngTableParams, variacionFunction, $http,servicioCuentaIndicador) {
 $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Longevidad", "Maximo total pasivo", "Maxima cantidad cuestas", "Menor capital contable"]
 
-        $scope.enviarMedologia = function(){
+        $scope.enviarMetodologia = function(){
             var parametros={
             	metodologia: $scope.metodologia,
             	reglasSeleccionadas: $scope.reglasSeleccionadas
             };
             $http({
-                url:'/metodologia',
+                url:'/agregarMetodologia',
                 params : parametros,
                 method : 'POST'
-            }).success(function(response){
-                var result = "El indicador no paso la evaluación, comprueba la sintaxis y vuelva a ingresarlo";
-
-                if(response){
-                    result = "El indicador fue cargado con exito";
-                }
-                document.getElementById('cargaCorrecta').innerHTML= result;
-                console.log("Se ha enviado correctamente el indicador: "+ response);
-                $scope.reloadIndicadores();
+            }).success(function(data){
+            	var resp=data
+                console.log("La metodologia "+parametros.metodologia+" se agrego correctamente.");
+            }).error(function(data){
+            	console.log("error");
             });
         };
         
@@ -33,21 +29,13 @@ $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Long
         	
         }
 
-		$http.get('/cuentas').success(function (data) {
-			var dataCuentas = data;
+		$http.get('/metodologias').success(function (data) {
+			var dataMetodologia = data;
 			$scope.filters = {
 				id : '',
 				first_name: '',
 				cuentaTenencia: ''};
-			$scope.cuentasTable = new ngTableParams({
-				page : 1,
-				count : 10,
-				filter:$scope.filters,
-				sorting:{}
-			}, {
-				total: dataCuentas.length,
-				dataset: dataCuentas
-			});
+			$scope.metodologiaTabla=dataMetodologia;
 		});
 
 }]);

@@ -5,7 +5,10 @@ import java.util.List;
 
 import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface MetodologiaService {
 	
 	//Devuelve todas las metodologias

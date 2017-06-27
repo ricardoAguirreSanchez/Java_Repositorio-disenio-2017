@@ -40,17 +40,14 @@
 				   class="table table-striped table-bordered"
 				   show-filter="false">
 				<tbody>
-				<tr ng-repeat="cuenta in cuentasTable.data">
+				<tr ng-repeat="cuenta in metodologiaTabla">
 					<td data-title="'Nombre'" sortable="'nombre'" style="text-align: center;"><div class="text-center">
-						<span>{{cuenta.tipoCuenta}}</span>
-					</div></td>
-					<td data-title="'Empresa'" sortable="'empresa'"><div class="text-center">
-						<span>{{cuenta.empresa}}</span>
+						<span>{{cuenta.nombre}}</span>
 					</div></td>
 				</tr>
 				</tbody>
 			</table>
-			<div ng-hide="cuentasTable.data.length">Usted no posee cuentas.</div>
+			<div ng-hide="metodologiaTabla.length">Usted no posee cuentas.</div>
 		</div>
 	</div>
 <br>
@@ -78,7 +75,7 @@
 	</div>
 </div>
 	<div id="cargaIndicadores" style="padding: 80px 50px 0px 15px;">
-		<button class="pull-right col-lg-3 button btn" ng-click="enviarIndicador(nombreIndicador, indicadorPersonal)">Realizar</button>
+		<button class="pull-right col-lg-3 button btn" ng-click="enviarMetodologia()">Agregar Metodologia</button>
 
 
 	</div>
