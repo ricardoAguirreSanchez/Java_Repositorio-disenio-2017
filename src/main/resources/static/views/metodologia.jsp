@@ -15,11 +15,17 @@
 				<tbody>
 				<tr style="background-color:#9c0000; color:white;">
 					<th style=" height: 50px;text-align: center;">Reglas</th>
+					<th style=" height: 50px;text-align: center;">Accion</th>
 				</tr>
-				<tr ng-repeat="regla in reglas">
+				<tr ng-repeat="regla in reglas track by $index">
 					<td data-title="'Nombre'">
 						<div class="text-center">
 							<span>{{regla}}</span>
+						</div>
+					</td>
+					<td data-title="">
+						<div class="text-center">
+							<span><input type="checkbox" ng-model="reglaChecked[$index]" ng-click="agregarRegla(regla, $index)"></span>
 						</div>
 					</td>
 				</tr>
@@ -64,11 +70,9 @@
 			</div>
 		</div>
 		<div class="col-md-6 col-lg-6">
-			<h3>Cuentas a Aplicar</h3>
+			<h3>Nombre metodologia</h3>
 			<div>
-				<ul>
-					<li ng-repeat="cuenta in cuentasSeleccionadas">{{cuenta}}</li>
-				</ul>
+				<input type="text" ng-model="metodologia" style="border: 1px solid black;"/>
 			</div>
 		</div>
 	</div>

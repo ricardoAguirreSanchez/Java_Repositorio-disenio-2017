@@ -2,13 +2,13 @@ app.controller('metodologiaController',['$rootScope','$scope','ngTableParams', '
 	function($rootScope, $scope, ngTableParams, variacionFunction, $http,servicioCuentaIndicador) {
 $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Longevidad", "Maximo total pasivo", "Maxima cantidad cuestas", "Menor capital contable"]
 
-        $scope.enviarIndicador=function(nombre ,indicador){
+        $scope.enviarMedologia = function(){
             var parametros={
-                indicador: indicador,
-                nombre: nombre
+            	metodologia: $scope.metodologia,
+            	reglasSeleccionadas: $scope.reglasSeleccionadas
             };
             $http({
-                url:'/indicadores',
+                url:'/metodologia',
                 params : parametros,
                 method : 'POST'
             }).success(function(response){
@@ -22,6 +22,16 @@ $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Long
                 $scope.reloadIndicadores();
             });
         };
+        
+        $scope.reglasSeleccionadas = [];
+        $scope.reglaChecked = [];
+        $scope.agregarRegla = function(regla, index){
+        	if($scope.reglaChecked[index]==true)
+        		$scope.reglasSeleccionadas.push(regla);
+        	else
+        		$scope.reglasSeleccionadas.splice($scope.reglasSeleccionadas.indexOf(regla),1);
+        	
+        }
 
 		$http.get('/cuentas').success(function (data) {
 			var dataCuentas = data;
