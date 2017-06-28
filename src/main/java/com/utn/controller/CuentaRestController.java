@@ -1,7 +1,10 @@
 package com.utn.controller;
 
 import com.utn.model.Cuenta;
+import com.utn.model.Empresa;
 import com.utn.services.CuentaService;
+import com.utn.services.EmpresaService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +18,17 @@ public class CuentaRestController {
 
     @Autowired
     private CuentaService cuentaService;
+    @Autowired
+    private EmpresaService empresaService;
 
     @RequestMapping(value= "/cuentas", method= RequestMethod.GET)
     public List<Cuenta> getCuentas(){
         return  cuentaService.getCuentas();
+    }
+    
+    @RequestMapping(value= "/empresas", method= RequestMethod.GET)
+    public List<Empresa> getEmpresas(){
+        return  empresaService.getEmpresas();
     }
 
     @RequestMapping(value= "/cuentas/{id}", method= RequestMethod.GET)

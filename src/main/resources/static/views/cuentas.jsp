@@ -40,7 +40,7 @@
 	</div>
 	<div>
 		<div>
-			<button ng-click="agregar=true">Agregar Cuenta</button>
+			<button class="pull-right col-lg-3 button btn" style=" margin-right: 39pc;" ng-click="agregar=true">Agregar Cuenta</button>
 			<div ng-show="agregar == true">
 			<div>
 				<span>Nombre:</span>
@@ -50,8 +50,9 @@
 				<span>Tipo:</span>
 				<input type="text" placeholder="Nombre Cuenta" class="form-control" ng-model="cuenta.tipo">
 			</div>
+			<br>
 			<div>
-				<button ng-click="agregarCuenta(cuenta)">Agregar</button>
+				<button class="pull-right col-lg-3 button btn" style="float:none;" ng-click="agregarCuenta(cuenta)">Agregar</button>
 			</div>
 			</div>
 		</div>

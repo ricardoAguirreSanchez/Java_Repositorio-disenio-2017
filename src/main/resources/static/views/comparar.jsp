@@ -31,7 +31,7 @@
 				</tr>
 				</tbody>
 			</table>
-			<div ng-hide="reglas.length">No existen Metodologias.</div>
+			<div ng-hide="metodologiaTabla.length">No existen Metodologias.</div>
 		</div>
 	</div>
 	<div id="cuentas_table" style="padding: 10px 15px 0px 15px;">
@@ -40,17 +40,17 @@
 				   class="table table-striped table-bordered"
 				   show-filter="false">
 				<tbody>
-				<tr ng-repeat="cuenta in cuentasTable.data" href="#cuentaPage" ng-click="cargarPage(cuenta.id)">
-					<td data-title="'Nombre'" sortable="'nombre'" style="text-align: center;"><div class="text-center">
-						<span>{{cuenta.tipoCuenta}}</span>
+				<tr ng-repeat="empresa in empresas">
+					<td data-title="'Nombre Empresa'" sortable="'nombre'" style="text-align: center;"><div class="text-center">
+						<span>{{empresa.nombre}}</span>
 					</div></td>
-					<td data-title="'Empresa'" sortable="'empresa'"><div class="text-center">
-						<span>{{cuenta.empresa}}</span>
+					<td data-title="'Creacion'" sortable="'empresa'"><div class="text-center">
+						<span>{{empresa.fechaCreacion}}</span>
 					</div></td>
 				</tr>
 				</tbody>
 			</table>
-			<div ng-hide="cuentasTable.data.length">Usted no posee cuentas.</div>
+			<div ng-hide="empresas.length">Usted no posee cuentas.</div>
 		</div>
 	</div>
 <br>

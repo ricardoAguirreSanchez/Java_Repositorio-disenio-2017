@@ -23,20 +23,21 @@ app.controller('compararController',['$rootScope','$scope','ngTableParams', 'var
 			$scope.metodologiaTabla=dataMetodologia;
 		});
 		
-		$http.get('/cuentas').success(function (data) {
-			var dataCuentas = data;
+		$http.get('/empresas').success(function (data) {
+			var dataEmpresas = data;
+			$scope.empresas=dataEmpresas;
 			$scope.filters = {
 				id : '',
 				first_name: '',
 				cuentaTenencia: ''};
-			$scope.cuentasTable = new ngTableParams({
+			$scope.empresaTable = new ngTableParams({
 				page : 1,
 				count : 10,
-				filter:$scope.filters,
+//				filter:$scope.filters,
 				sorting:{}
 			}, {
-				total: dataCuentas.length,
-				dataset: dataCuentas
+				total: dataEmpresas.length,
+				dataset: dataEmpresas
 			});
 		});
 		
@@ -58,7 +59,7 @@ app.controller('compararController',['$rootScope','$scope','ngTableParams', 'var
                 method : 'POST'
             }).success(function(data){
             	$scope.cuentasGanadoras=data;
-                console.log("La metodologia "+$scope.cuentaGanadora+" se agrego correctamente.");
+                console.log("La metodologia "+$scope.cuentasGanadoras+" se agrego correctamente.");
             }).error(function(data){
             	console.log("error");
             });

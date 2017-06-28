@@ -12,7 +12,7 @@ $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Long
                 method : 'POST'
             }).success(function(data){
             	$scope.metodologiaTabla=data;
-                console.log("La metodologia "+parametros.metodologia+" se agrego correctamente.");
+                alert("La metodologia "+parametros.metodologia+" se agrego correctamente.");
             }).error(function(data){
             	console.log("error");
             });

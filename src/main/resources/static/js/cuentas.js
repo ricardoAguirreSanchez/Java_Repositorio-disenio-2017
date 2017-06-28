@@ -32,7 +32,7 @@ app.controller('cuentaController',['$rootScope','$scope', '$http','ngTableParams
                 params : cuenta,
                 method : 'POST'
             }).success(function(response){
-                console.log("Se ha enviado correctamente La cuenta");
+                alert("Se ha enviado correctamente La cuenta");
             }).error(function(response){
             	console.log("No se pudo enviar La cuenta");
             });
