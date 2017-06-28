@@ -124,6 +124,9 @@ app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunct
 	$scope.cargarMetodologia = function(){
 		$rootScope.tipo='metodologia'
 	}
+	$scope.cargarComparar = function(){
+		$rootScope.tipo='comparar'
+	}
 	function validarCampos(erroresForm){
 		for(x in erroresForm){
 			if (erroresForm.hasOwnProperty(x)) {

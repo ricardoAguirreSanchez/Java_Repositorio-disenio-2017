@@ -38,6 +38,7 @@
     <script type="text/javascript" src="js/usuarioHome.js"></script>
     <script type="text/javascript" src="js/indicadores.js"></script>
     <script type="text/javascript" src="js/metodologia.js"></script>
+    <script type="text/javascript" src="js/comparar.js"></script>    
     <script type="text/javascript" src="js/cuentas.js"></script>
     <script type="text/javascript" src="js/cuentaPage.js"></script>
     <script type="text/javascript" src="js/service.js"></script>
@@ -67,7 +68,7 @@
 
             <li id="opcion_metodologia" ng-click="cargarMetodologia()"><a><div><i class="icon_ba icon_ba_home"></i></div><span>Metodologias</span></a></li>
 
-            <li id="opcion_comparar" ng-click="tipo='comparar'"><a><div><i class="icon_ba icon_ba_home"></i></div><span>Comparar</span></a></li>
+            <li id="opcion_comparar" ng-click="cargarComparar()"><a><div><i class="icon_ba icon_ba_home"></i></div><span>Comparar</span></a></li>
         </ul>
     </div>
 </aside>
@@ -85,6 +86,9 @@
 </div>
 <div class="container" ng-show="tipo=='cuentaPage'">
     <div class="" ng-include="'views/cuentaPage.jsp'" id="cuentaPage"></div>
+</div>
+<div class="container" ng-show="tipo=='comparar'">
+    <div class="" ng-include="'views/comparar.jsp'" id="comparar"></div>
 </div>
 <!-- FIN WRAPPER -->
 
