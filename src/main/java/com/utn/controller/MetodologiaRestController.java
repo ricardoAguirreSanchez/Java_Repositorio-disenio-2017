@@ -1,6 +1,7 @@
 package com.utn.controller;
 
 import com.utn.model.Cuenta;
+import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
 import com.utn.services.CuentaService;
 import com.utn.services.MetodologiaService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -34,7 +36,20 @@ public class MetodologiaRestController {
     @RequestMapping(value= "/agregarMetodologia", method= RequestMethod.POST)
     public Boolean addMetodologia(@RequestParam String metodologia, @RequestParam ArrayList<String> reglasSeleccionadas){
         String nombre=metodologia;
-    	return  true;
+    	//La idea seria armar un objeto Metodologia seteando el nombre ingresado y les reglas elegidas y luego 
+        //usar el metodo --> metodologiaService.setMetodologia(Metodologia metodologia) y quiza para ver el cambio
+        //refrescar la tabla de abajo,asi se ve q esta cargado
+        Metodologia metodologiaNueva = new Metodologia();
+        metodologiaNueva.setNombre(metodologia);
+        metodologiaNueva.setListaCondiciones(reglasSeleccionadas);
+        metodologiaService.setMetodologia(metodologiaNueva);
+        
+        return  true;
     }
+    
+    
+    //Aca iria el request para pedir a partir de una metodologia elegida, devolver un hashmap con el nombre de la regla como 
+    //key y el nombre de la empresa ue mejor se adecua a esa regla, usando:
+    // metodologiaService.realizaComparacion(Metodologia metodologia) 
     
 }
