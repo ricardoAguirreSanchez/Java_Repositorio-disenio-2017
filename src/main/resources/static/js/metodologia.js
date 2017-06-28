@@ -1,7 +1,6 @@
 app.controller('metodologiaController',['$rootScope','$scope','ngTableParams', 'variacionFunction','$http','servicioCuentaIndicador',
 	function($rootScope, $scope, ngTableParams, variacionFunction, $http,servicioCuentaIndicador) {
 $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Longevidad", "Maximo total pasivo", "Maxima cantidad cuestas", "Menor capital contable"]
-
         $scope.enviarMetodologia = function(){
             var parametros={
             	metodologia: $scope.metodologia,
@@ -12,7 +11,7 @@ $scope.reglas=["Maximizar ROE", "Minimizar Deuda", "Margenes de Ganancia", "Long
                 params : parametros,
                 method : 'POST'
             }).success(function(data){
-            	var resp=data
+            	$scope.metodologiaTabla=data;
                 console.log("La metodologia "+parametros.metodologia+" se agrego correctamente.");
             }).error(function(data){
             	console.log("error");

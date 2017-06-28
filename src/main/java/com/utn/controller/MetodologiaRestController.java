@@ -34,7 +34,7 @@ public class MetodologiaRestController {
 //    }
     
     @RequestMapping(value= "/agregarMetodologia", method= RequestMethod.POST)
-    public Boolean addMetodologia(@RequestParam String metodologia, @RequestParam ArrayList<String> reglasSeleccionadas){
+    public List<Metodologia> addMetodologia(@RequestParam String metodologia, @RequestParam ArrayList<String> reglasSeleccionadas){
         String nombre=metodologia;
     	//La idea seria armar un objeto Metodologia seteando el nombre ingresado y les reglas elegidas y luego 
         //usar el metodo --> metodologiaService.setMetodologia(Metodologia metodologia) y quiza para ver el cambio
@@ -44,7 +44,7 @@ public class MetodologiaRestController {
         metodologiaNueva.setListaCondiciones(reglasSeleccionadas);
         metodologiaService.setMetodologia(metodologiaNueva);
         
-        return  true;
+        return  metodologiaService.getMetodologias();
     }
     
     
