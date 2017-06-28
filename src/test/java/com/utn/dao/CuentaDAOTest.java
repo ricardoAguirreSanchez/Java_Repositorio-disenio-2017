@@ -12,8 +12,7 @@ public class CuentaDAOTest {
     public void leerTodasLasCuentasTest() {
 
         CuentaDAO cuenta = new CuentaDAO();
-        System.out.println(cuenta.getCuentas().get(0).toString());
-        Assert.assertEquals(2, cuenta.getCuentas().size());
+        Assert.assertEquals(3, cuenta.getCuentas().size());
     }
 
 }
