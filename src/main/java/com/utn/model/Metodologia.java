@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Metodologia {
 	private String nombre;
-	private ArrayList<String> listaCondiciones;
+	private ArrayList<String> condiciones;
 	
 	public String getNombre() {
 		return nombre;
@@ -12,11 +12,11 @@ public class Metodologia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ArrayList<String> getListaCondiciones() {
-		return listaCondiciones;
+	public ArrayList<String> getCondiciones() {
+		return condiciones;
 	}
-	public void setListaCondiciones(ArrayList<String> listaCondiciones) {
-		this.listaCondiciones = listaCondiciones;
+	public void setCondiciones(ArrayList<String> condiciones) {
+		this.condiciones = condiciones;
 	}
 
 }

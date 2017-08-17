@@ -1,20 +1,15 @@
 package com.utn.controller;
 
-import com.utn.model.Cuenta;
-import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
-import com.utn.services.CuentaService;
 import com.utn.services.MetodologiaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -41,7 +36,7 @@ public class MetodologiaRestController {
         //refrescar la tabla de abajo,asi se ve q esta cargado
         Metodologia metodologiaNueva = new Metodologia();
         metodologiaNueva.setNombre(metodologia);
-        metodologiaNueva.setListaCondiciones(reglasSeleccionadas);
+        metodologiaNueva.setCondiciones(reglasSeleccionadas);
         metodologiaService.setMetodologia(metodologiaNueva);
         
         return  metodologiaService.getMetodologias();

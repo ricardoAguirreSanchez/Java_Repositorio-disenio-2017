@@ -23,7 +23,7 @@ public class CompararRestController {
     public HashMap<String, Empresa> realizarComparacion(@RequestParam String nombre, @RequestParam ArrayList<String> listaCondiciones){
     	Metodologia metodologia = new Metodologia();
     	metodologia.setNombre(nombre);
-    	metodologia.setListaCondiciones(listaCondiciones);
+    	metodologia.setCondiciones(listaCondiciones);
     	return metodologiaService.realizaComparacion(metodologia);
     }
     

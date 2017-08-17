@@ -1,25 +1,13 @@
 package com.utn;
 
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.drools.compiler.compiler.DroolsParserException;
-import org.drools.compiler.compiler.*;
-import org.drools.core.*;
-import org.drools.core.WorkingMemory;
-
 import com.utn.dao.CatalogoReglasDAO;
 import com.utn.dao.MetodologiaDAO;
-import com.utn.model.Cuenta;
 import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
-import com.utn.reglas.Respuesta;
-import com.utn.reglas.Sesion;
 import com.utn.services.implementation.CatalogoReglasImplementation;
 import com.utn.services.implementation.MetodologiaServiceImplementation;
 
@@ -35,7 +23,7 @@ public class Main {
 		listaCondiciones.add("Longevidad");
 		
 		Metodologia metodologia = new Metodologia();
-		metodologia.setListaCondiciones(listaCondiciones);
+		metodologia.setCondiciones(listaCondiciones);
 		
 		HashMap<String,Empresa> hash = msi.realizaComparacion(metodologia);
 		System.out.println("La empresa ganadora de Longevidad es: "+ hash.get("Longevidad").getNombre() );
@@ -49,7 +37,7 @@ public class Main {
 		listaCondiciones1.add("Maximizar ROE");
 		
 		Metodologia metodologia1 = new Metodologia();
-		metodologia1.setListaCondiciones(listaCondiciones1);
+		metodologia1.setCondiciones(listaCondiciones1);
 		
 		HashMap<String,Empresa> hash1 = msi1.realizaComparacion(metodologia1);
 		System.out.println("La empresa ganadora de Maximizar ROE es: "+ hash1.get("Maximizar ROE").getNombre() );
@@ -63,7 +51,7 @@ public class Main {
 		listaCondiciones2.add("Margenes de ganancia");
 		
 		Metodologia metodologia2 = new Metodologia();
-		metodologia2.setListaCondiciones(listaCondiciones2);
+		metodologia2.setCondiciones(listaCondiciones2);
 		
 		HashMap<String,Empresa> hash2 = msi2.realizaComparacion(metodologia2);
 		System.out.println("La empresa ganadora de Margenes de ganancia es: "+ hash2.get("Margenes de ganancia").getNombre() );
@@ -78,7 +66,7 @@ public class Main {
 		listaCondiciones3.add("Minimizar deuda");
 		
 		Metodologia metodologia3 = new Metodologia();
-		metodologia3.setListaCondiciones(listaCondiciones3);
+		metodologia3.setCondiciones(listaCondiciones3);
 		
 		HashMap<String,Empresa> hash3 = msi3.realizaComparacion(metodologia3);
 		System.out.println("La empresa ganadora de Minimizar deuda es: "+ hash3.get("Minimizar deuda").getNombre() );
@@ -101,7 +89,7 @@ public class Main {
 		ArrayList<String > listaCondicionesNuevas = new ArrayList<>();
 		listaCondicionesNuevas.add("Maximizar ROE");
 		listaCondicionesNuevas.add("Maxima cantidad cuentas");
-		metodologiaNueva.setListaCondiciones(listaCondiciones3);
+		metodologiaNueva.setCondiciones(listaCondiciones3);
 		//guardo la metodologia
 		msi3.setMetodologia(metodologiaNueva);
 		
