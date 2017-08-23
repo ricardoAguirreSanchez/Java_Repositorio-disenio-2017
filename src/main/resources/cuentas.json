@@ -1,8 +1,6 @@
 [
   {
-    "id":1,
     "tipoCuenta": "STD",
-    "empresa": "Sony",
     "cuentaValores": [
       {
         "fechaInicio":"2017-01-01",
@@ -28,12 +26,14 @@
         "profit": 300.0,
         "cost": 70
       }
-    ]
+    ],
+    "empresa": {
+    }
   },
   {
     "id": 2,
     "tipoCuenta": "SSDD",
-    "empresa": "Samsung",
+    "empresa": {},
     "cuentaValores": [
       {
         "fechaInicio":"2016-05-15",
@@ -64,7 +64,7 @@
   {
     "id":3,
     "tipoCuenta": "Darwin",
-    "empresa": "SonySW",
+    "empresa": {},
     "cuentaValores": [
       {
         "fechaInicio":"2015-01-01",

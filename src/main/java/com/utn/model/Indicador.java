@@ -2,18 +2,25 @@ package com.utn.model;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.util.StringJoiner;
 
 /**
  * Created by nicolas on 22/05/17.
  */
 @Component
+@Entity
+@Table(name = "INDICADOR")
 public class Indicador {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String nombre;
     private String expresion;
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
 
     public String getExpresion() {return expresion;}
 

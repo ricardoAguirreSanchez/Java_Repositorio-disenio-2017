@@ -2,6 +2,7 @@ package com.utn.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by nicolaslamas on 16/08/17.
@@ -19,6 +20,10 @@ public class Usuario {
     private String mail;
     @NotNull
     private String password;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Indicador> indicadores;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Metodologia> metodologias;
 
     public Usuario() {}
 

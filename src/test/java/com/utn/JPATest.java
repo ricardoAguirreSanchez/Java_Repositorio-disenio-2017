@@ -1,9 +1,5 @@
 package com.utn;
 
-import java.util.List;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import com.utn.model.Usuario;
 import com.utn.repositorio.Repositorio;
 import org.junit.After;
@@ -11,6 +7,9 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JPATest {

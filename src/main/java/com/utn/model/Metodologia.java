@@ -1,10 +1,21 @@
 package com.utn.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "METODOLOGIA")
 public class Metodologia {
+
+	@Id
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	private long id;
 	private String nombre;
-	private ArrayList<String> condiciones;
+	@ElementCollection
+	private List<String> condiciones;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
 	
 	public String getNombre() {
 		return nombre;
@@ -12,10 +23,10 @@ public class Metodologia {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ArrayList<String> getCondiciones() {
+	public List<String> getCondiciones() {
 		return condiciones;
 	}
-	public void setCondiciones(ArrayList<String> condiciones) {
+	public void setCondiciones(List<String> condiciones) {
 		this.condiciones = condiciones;
 	}
 

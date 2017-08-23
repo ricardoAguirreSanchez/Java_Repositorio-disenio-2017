@@ -2,15 +2,24 @@ package com.utn.model;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.StringJoiner;
 
 @Component
+@Entity
+@Table(name = "CUENTA")
 public class Cuenta {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@Column(name = "tipo_cuenta")
 	private String tipoCuenta;
-	private String empresa;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
+	private Empresa empresa;
+	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
 	private List<CuentaValores> cuentaValores;
 
 	public long getId() {
@@ -29,17 +38,15 @@ public class Cuenta {
 		this.tipoCuenta = tipoCuenta;
 	}
 
-	public String getEmpresa() {
+	public Empresa getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(String empresa) {
+	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
 
-	public List<CuentaValores> getCuentaValores() {return cuentaValores;}
-
-	public void setCuentaValores(List<CuentaValores> cuentaValores) {this.cuentaValores = cuentaValores;}
+	public List<CuentaValores> getCuentaValores() {return null;}
 
 	@Override
 	public String toString() {
@@ -47,7 +54,7 @@ public class Cuenta {
 		return new StringJoiner(", ", Cuenta.class.getSimpleName() + "{", "}")
 				.add("tipoCuenta= " + tipoCuenta)
 				.add("empresa= " + empresa)
-				.add("cuentaValores= " + cuentaValores)
+				.add("cuentaValores= " + null)
 				.toString();
 	}
 
