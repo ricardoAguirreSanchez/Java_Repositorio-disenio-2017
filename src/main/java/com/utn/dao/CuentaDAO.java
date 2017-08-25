@@ -13,10 +13,14 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 @Component
 public class CuentaDAO {
+
+	//TODO cambiar el dao, para que reciba los archivos y lo de la base de datos tambien. Hay qeu agregar un filtro despues por usuario.
+	//TODO es para todos los DAO.
 
 	private ClassLoader classLoader = getClass().getClassLoader();
 	private String fileName = classLoader.getResource("cuentas.json").getFile();
@@ -26,10 +30,11 @@ public class CuentaDAO {
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
 	public List<Cuenta> getCuentas()  {
-		List<Cuenta> listaCuentas = new ArrayList<Cuenta>();
+		List<Cuenta> listaCuentas = new ArrayList<>();
 		try {
 			JsonReader reader = new JsonReader(new FileReader(fileName));
 			listaCuentas = gson.fromJson(reader, jsonCuentaType);
+			listaCuentas.addAll(getCuentasDB());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -80,6 +85,9 @@ public class CuentaDAO {
 		
 	}
 
+	public List<Cuenta> getCuentasDB() {
+		return null;
+	}
 }
 
 

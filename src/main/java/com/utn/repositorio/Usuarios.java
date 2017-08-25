@@ -6,10 +6,12 @@ package com.utn.repositorio;
 import com.utn.model.Usuario;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class Usuarios extends Repositorio {
 
-    Usuarios(EntityManager em) {
+    public Usuarios(EntityManager em) {
         super(em);
     }
 
@@ -21,6 +23,11 @@ public class Usuarios extends Repositorio {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();
+    }
+
+    public List<Usuario> getUsuarios() {
+        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u", Usuario.class);
+        return query.getResultList();
     }
 }
 

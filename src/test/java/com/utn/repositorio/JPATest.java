@@ -1,4 +1,4 @@
-package com.utn;
+package com.utn.repositorio;
 
 import com.utn.model.Usuario;
 import com.utn.repositorio.Repositorio;
@@ -10,6 +10,9 @@ import org.junit.runners.MethodSorters;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.List;
+
+//TODO cambiar este test, para realizar pruebas de llamadas a lso metodos del repositorio.
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JPATest {
@@ -24,13 +27,11 @@ public class JPATest {
     }
     @Test
     public void aPersistir() {
-        Usuario c = new Usuario();
-        c.setNombre("12");
-        c.setMail("falop");
-        c.setMail("mail");
-        c.setPassword("pass");
 
-        repositorio.usuarios().persistir(c);
+
+        List<Usuario> t = repositorio.usuarios().getUsuarios();
+        int x = 0;
+
     }
 
     @After

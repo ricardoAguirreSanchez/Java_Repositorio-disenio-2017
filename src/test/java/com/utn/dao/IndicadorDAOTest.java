@@ -11,6 +11,7 @@ import org.junit.Test;
  */
 public class IndicadorDAOTest {
 
+    //TODO arreglar este test.
     private IndicadorDAO indicadores;
 
     @Before
