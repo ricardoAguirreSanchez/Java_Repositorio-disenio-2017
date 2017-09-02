@@ -46,7 +46,7 @@ public class Cuenta {
 		this.empresa = empresa;
 	}
 
-	public List<CuentaValores> getCuentaValores() {return null;}
+	public List<CuentaValores> getCuentaValores() {return cuentaValores;}
 
 	@Override
 	public String toString() {
@@ -54,7 +54,7 @@ public class Cuenta {
 		return new StringJoiner(", ", Cuenta.class.getSimpleName() + "{", "}")
 				.add("tipoCuenta= " + tipoCuenta)
 				.add("empresa= " + empresa)
-				.add("cuentaValores= " + null)
+				.add("cuentaValores= " + cuentaValores)
 				.toString();
 	}
 

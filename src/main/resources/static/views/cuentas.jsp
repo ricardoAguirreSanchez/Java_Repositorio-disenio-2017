@@ -30,7 +30,7 @@
 						<span>{{cuenta.tipoCuenta}}</span>
 					</div></td>
 					<td data-title="'Empresa'" sortable="'empresa'"><div class="text-center">
-						<span>{{cuenta.empresa}}</span>
+						<span>{{cuenta.empresa.nombre}}</span>
 					</div></td>
 				</tr>
 				</tbody>

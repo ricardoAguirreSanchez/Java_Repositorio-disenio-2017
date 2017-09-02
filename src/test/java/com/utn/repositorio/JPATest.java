@@ -12,8 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-//TODO cambiar este test, para realizar pruebas de llamadas a lso metodos del repositorio.
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JPATest {
     private static final String PERSISTENCE_UNIT_NAME = "DDS";

@@ -46,7 +46,6 @@ public class MetodologiaDAO {
 	
 	
 	public void setMetodologia(Metodologia metodologia) {
-		// TODO Auto-generated method stub
 		listaMetodologia.add(metodologia);
 		
 	}
