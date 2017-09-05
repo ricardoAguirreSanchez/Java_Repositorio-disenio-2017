@@ -3,8 +3,12 @@ package com.utn.repositorio;
 /**
  * Created by nicolaslamas on 16/08/17.
  */
-import javax.persistence.EntityManager;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+@Component
 public class Repositorio {
 
     private Usuarios usuarios;
@@ -17,6 +21,14 @@ public class Repositorio {
 
     public Repositorio(EntityManager em) {
         this.em = em;
+    }
+
+    public Repositorio(){
+        this.em = Persistence.createEntityManagerFactory("DDS").createEntityManager();
+    }
+
+    public Repositorio(String nombreDB) {
+        this.em = Persistence.createEntityManagerFactory("nombreDB").createEntityManager();
     }
 
     public Usuarios usuarios() {

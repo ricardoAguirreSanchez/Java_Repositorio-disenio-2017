@@ -1,21 +1,11 @@
 package com.utn;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.utn.dao.CatalogoReglasDAO;
-import com.utn.dao.MetodologiaDAO;
-import com.utn.model.Empresa;
-import com.utn.model.Metodologia;
-import com.utn.services.implementation.CatalogoReglasImplementation;
-import com.utn.services.implementation.MetodologiaServiceImplementation;
-
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//TEST DE LONGEVIDAD
+		/*//TEST DE LONGEVIDAD
 		MetodologiaDAO metodologiaDAO = new MetodologiaDAO();
 		MetodologiaServiceImplementation msi = new MetodologiaServiceImplementation(metodologiaDAO);
 		
@@ -95,7 +85,7 @@ public class Main {
 		
 		//muestro todas la metodologias del sistema
 		msi3.getMetodologias();
-		System.out.println(msi3.getMetodologias());
+		System.out.println(msi3.getMetodologias()); */
 	}
 
 }

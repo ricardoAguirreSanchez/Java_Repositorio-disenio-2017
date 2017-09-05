@@ -1,20 +1,17 @@
 package com.utn.services.implementation;
 
-import java.util.HashMap;
-import java.util.List;
-
-import org.drools.core.WorkingMemory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.utn.dao.IndicadorDAO;
 import com.utn.dao.MetodologiaDAO;
-import com.utn.model.Cuenta;
 import com.utn.model.Empresa;
 import com.utn.model.Metodologia;
 import com.utn.reglas.Respuesta;
 import com.utn.reglas.Sesion;
 import com.utn.services.MetodologiaService;
+import org.drools.core.WorkingMemory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class MetodologiaServiceImplementation implements MetodologiaService{
