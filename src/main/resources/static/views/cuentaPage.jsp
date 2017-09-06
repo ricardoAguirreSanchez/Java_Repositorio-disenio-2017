@@ -5,7 +5,7 @@
 
     <div class="h1">
         <h1>
-            <i class="icon_ba icon_ba_cotizacion"></i>{{cuentaPage.empresa}} {{cuentaPage.nombre}} <span
+            <i class="icon_ba icon_ba_cotizacion"></i>{{cuentaPage.empresa.nombre}} {{cuentaPage.nombre}} <span
                 class="indicadores_vistas" id="indicadores_vistas"><i
                 class="icon_ba icon_ba_secciones_menu vista_tabla"></i></span>
         </h1>

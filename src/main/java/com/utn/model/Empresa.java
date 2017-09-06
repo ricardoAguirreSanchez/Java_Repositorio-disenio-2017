@@ -1,16 +1,28 @@
 package com.utn.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name ="EMPRESA")
 public class Empresa {
-	private ArrayList<Long> listaIdCuentas;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	@NotNull
+	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
 	private String nombre;
-	
-	//Se agregan estos dos para calcular su nivel de deuda
+	@Column(name = "total_pasivo")
 	private Double totalPasivo;
+	@Column(name = "capital_contable")
 	private Double capitalContable;
+	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+	private List<Cuenta> cuentas;
 	
 	public Double getTotalPasivo() {
 		return totalPasivo;
@@ -27,11 +39,11 @@ public class Empresa {
 	
 	
 	
-	public ArrayList<Long> getListaIdCuentas() {
-		return listaIdCuentas;
+	public List<Long> getListaIdCuentas() {
+		return null;
 	}
 	public void setListaIdCuentas(ArrayList<Long> listaNombreCuentas) {
-		this.listaIdCuentas = listaNombreCuentas;
+
 	}
 	public Date getFechaCreacion() {
 		return fechaCreacion;

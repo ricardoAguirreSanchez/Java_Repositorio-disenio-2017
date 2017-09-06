@@ -1,11 +1,9 @@
 [
   {
-    "id":1,
     "tipoCuenta": "STD",
-    "empresa": "Sony",
     "cuentaValores": [
       {
-        "fechaInicio":"2017-01-01",
+        "fechaInicio": "2017-01-01",
         "fechaFin": "2017-02-02",
         "roi": 50.0,
         "grossBooking": 5.0,
@@ -13,7 +11,7 @@
         "cost": 50
       },
       {
-        "fechaInicio":"2017-03-03",
+        "fechaInicio": "2017-03-03",
         "fechaFin": "2017-04-04",
         "roi": 20.0,
         "grossBooking": 6.0,
@@ -21,22 +19,33 @@
         "cost": 60
       },
       {
-        "fechaInicio":"2017-05-05",
+        "fechaInicio": "2017-05-05",
         "fechaFin": "2017-06-06",
         "roi": 30.0,
         "grossBooking": 7.0,
         "profit": 300.0,
         "cost": 70
       }
-    ]
+    ],
+    "empresa": {
+      "nombre": "Microsoft",
+      "capitalContable": 10000,
+      "totalPasivo": 10000,
+      "fechaCreacion": "2004-05-15"
+    }
   },
   {
     "id": 2,
     "tipoCuenta": "SSDD",
-    "empresa": "Samsung",
+    "empresa": {
+      "nombre": "Microsoft",
+      "capitalContable": 10000,
+      "totalPasivo": 10000,
+      "fechaCreacion": "2004-05-15"
+    },
     "cuentaValores": [
       {
-        "fechaInicio":"2016-05-15",
+        "fechaInicio": "2016-05-15",
         "fechaFin": "2017-02-02",
         "roi": 100.0,
         "grossBooking": 55.0,
@@ -44,7 +53,7 @@
         "cost": 5850
       },
       {
-        "fechaInicio":"2017-03-03",
+        "fechaInicio": "2017-03-03",
         "fechaFin": "2017-04-04",
         "roi": 120.0,
         "grossBooking": 16.0,
@@ -52,7 +61,7 @@
         "cost": 602
       },
       {
-        "fechaInicio":"2017-05-05",
+        "fechaInicio": "2017-05-05",
         "fechaFin": "2017-06-06",
         "roi": 35.00,
         "grossBooking": 47.0,
@@ -62,12 +71,17 @@
     ]
   },
   {
-    "id":3,
+    "id": 3,
     "tipoCuenta": "Darwin",
-    "empresa": "SonySW",
+    "empresa": {
+      "nombre": "Microsoft",
+      "capitalContable": 10000,
+      "totalPasivo": 10000,
+      "fechaCreacion": "2004-05-15"
+    },
     "cuentaValores": [
       {
-        "fechaInicio":"2015-01-01",
+        "fechaInicio": "2015-01-01",
         "fechaFin": "2015-02-02",
         "roi": 50.0,
         "grossBooking": 5.0,
@@ -75,7 +89,7 @@
         "cost": 50
       },
       {
-        "fechaInicio":"2017-03-03",
+        "fechaInicio": "2017-03-03",
         "fechaFin": "2017-04-04",
         "roi": 20.0,
         "grossBooking": 6.0,
@@ -83,7 +97,7 @@
         "cost": 60
       },
       {
-        "fechaInicio":"2017-05-05",
+        "fechaInicio": "2017-05-05",
         "fechaFin": "2017-06-06",
         "roi": 30.0,
         "grossBooking": 7.0,

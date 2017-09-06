@@ -3,6 +3,7 @@ package com.utn.model;
 import com.utn.indicadores.resolver.NumericVariableResolver;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringJoiner;
@@ -12,17 +13,27 @@ import java.util.StringJoiner;
  */
 
 @Component
+@Entity
+@Table(name = "CUENTA_VALORES")
 public class CuentaValores implements NumericVariableResolver {
 
-   private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column(name = "fecha_inicio")
     private Date fechaInicio;
+    @Column(name = "fecha_fin")
     private Date fechaFin;
     private Double roi;
+    @Column(name = "gross_booking")
     private Double grossBooking;
     private Double profit;
     private Double cost;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cuenta_id", referencedColumnName = "id")
+    private Cuenta cuenta;
 
     public Date getFechaInicio() {
         return fechaInicio;

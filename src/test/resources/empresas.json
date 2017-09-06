@@ -1,0 +1,27 @@
+[
+  {
+    "nombre":"AAAA",
+    "fechaCreacion":"2004-01-01",
+    "totalPasivo":1222,
+    "capitalContable":222,
+    "listaIdCuentas": [
+      1]
+  },
+  {
+    "nombre":"BBBB",
+    "fechaCreacion":"1983-01-01",
+    "totalPasivo":10002,
+    "capitalContable":212,
+    "listaIdCuentas": [
+      2]
+  },
+  {
+    "nombre":"CCCC",
+    "fechaCreacion":"1993-01-01",
+    "totalPasivo":300,
+    "capitalContable":10,
+    "listaIdCuentas": [
+      1,
+      2]
+  }
+]

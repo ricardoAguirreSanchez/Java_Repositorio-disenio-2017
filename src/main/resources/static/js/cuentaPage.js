@@ -23,6 +23,7 @@ app.controller('cuentaPageController',['$rootScope','$scope', '$http','ngTablePa
 
 
             $http.get('/cuentas/' + $scope.id).success(function (data) {
+                console.log(data);
                 $scope.cuentaPage = {
                     empresa: data.empresa,
                     nombre: data.tipoCuenta,

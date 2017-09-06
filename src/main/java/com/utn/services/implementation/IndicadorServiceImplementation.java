@@ -28,6 +28,6 @@ public class IndicadorServiceImplementation implements IndicadorService{
 
     @Override
     public void setIndicador(String nombre, String indicador) {
-        indicadorDAO.agregarIndicador(nombre,indicador);
+        indicadorDAO.addIndicador(nombre,indicador);
     }
 }
