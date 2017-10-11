@@ -71,7 +71,7 @@ app.factory('usuarioHomeFunctions',[ '$http','ajaxFunctions', function($http,aja
 	};
 }])
 
-app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunctions', '$uibModal', function($scope, $rootScope, usuarioHomeFunctions, $uibModal, $http){
+app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunctions', '$uibModal', '$http', function($scope, $rootScope, usuarioHomeFunctions, $uibModal, $http){
 	$rootScope.tipo='cuentas';
 	
 	
@@ -79,10 +79,32 @@ app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunct
 		setTimeout(function(){
 //			$scope.cargarIndicadores();
 		}, 400);
-	
+//		$http({
+//			url:'/validarLogeado',
+//			method: 'GET'
+//				}).success(function (data) {
+//					if(data==false){
+//					window.location.href="/";
+//					winwodw.location.assign(window.location.href)
+//					}
+//			alert("Credenciales Correctas");
+//		}).error(function(response){
+//			alert("Error en las credenciales.");
+//		});
 	
 	}
-	
+	$scope.logOut=function(){
+		$http({
+			url:'/logOut',
+			method: 'GET'
+				}).success(function (data) {
+					window.location.href="/";
+					winwodw.location.assign(window.location.href)
+			alert("Se deslogeo correctamente");
+		}).error(function(response){
+			alert("Error al deslogearse.");
+		});
+	}
 	usuarioHomeFunctions.setCallbackDefault(function(){
 		if(!$scope.modalAbierto){
 			$scope.showModal("ERROR GRAVE, MODIFICAR TEXTO");
