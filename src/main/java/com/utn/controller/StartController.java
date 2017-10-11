@@ -9,7 +9,7 @@ public class StartController {
 
     @RequestMapping(value="/",method = RequestMethod.GET)
     public String homepage(){
-        return "index.html";
+        return "login.html";
     }
 
 }
