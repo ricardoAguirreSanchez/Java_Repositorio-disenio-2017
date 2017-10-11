@@ -16,27 +16,27 @@ public class Usuarios extends Repositorio {
         this.em = em;
     }
 
-    public Usuario buscarPorId(Long id) {
-        return em.find(Usuario.class, id);
-    }
-
-    public Usuario buscarPorUserAndPassword(String user, String password){
-        Usuario userResult = (Usuario) em.createQuery("SELECT u FROM Usuario u where u.mail = ? and u.password = ?")
-                .setParameter(0, user)
-                .setParameter(1, password)
-                .getSingleResult();
-        return userResult;
-    }
-    
     public void persistir(Usuario usuario) {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();
     }
 
+    public Usuario buscarPorId(Long id) {
+        return em.find(Usuario.class, id);
+    }
+
     public List<Usuario> getUsuarios() {
         TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u", Usuario.class);
         return query.getResultList();
+    }
+
+    public Usuario buscarPorMailYPassword(String user, String password){
+        Usuario userResult = (Usuario) em.createQuery("SELECT u FROM Usuario u where u.mail = ? and u.password = ?")
+                .setParameter(0, user)
+                .setParameter(1, password)
+                .getSingleResult();
+        return userResult;
     }
 }
 

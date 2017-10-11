@@ -1,30 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Grupo | T&iacute;tulo</title>
     <!-- FAVICON -->
-    
     <!-- TODO Mirar si pueden pasarse estas librerias como dependencias de maven para limpiar un toque el codigo -->
-    <link rel="shortcut icon" type="image/png" href="resources/img/favicon.png"/>
-    <link rel="stylesheet" type="text/css" href="css/fonts.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/iconos.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/morris.css">
-    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/jquery.steps.css">
-    <link rel="stylesheet" type="text/css" href="css/resets.css">
-    <link rel="stylesheet" type="text/css" href="css/colores_generales.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.9/ng-table.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.16.1/select.min.css">
-    <link rel="stylesheet" type="text/css" href="css/general_styles.css">
-    <link rel="stylesheet" type="text/css" href="css/gifAnimation.css">
+    <link rel="stylesheet" href="css/login.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.9/ng-table.min.js"></script>
@@ -32,13 +16,13 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.16.1/select.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.steps.min.js"></script>
-<!--     <script type="text/javascript" src="js/highstock.js"></script> -->
+    <!--     <script type="text/javascript" src="js/highstock.js"></script> -->
     <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="js/jquery.totemticker.min.js"></script>
     <script type="text/javascript" src="js/usuarioHome.js"></script>
     <script type="text/javascript" src="js/indicadores.js"></script>
     <script type="text/javascript" src="js/metodologia.js"></script>
-    <script type="text/javascript" src="js/comparar.js"></script>    
+    <script type="text/javascript" src="js/comparar.js"></script>
     <script type="text/javascript" src="js/cuentas.js"></script>
     <script type="text/javascript" src="js/cuentaPage.js"></script>
     <script type="text/javascript" src="js/service.js"></script>
@@ -50,34 +34,21 @@
 <header class="fondo_celeste" ng-include="'views/headerLogOut.jsp'" >
 </header>
 <!-- FIN HEADER -->
-<div form="logInForm" novalidate>
-	<div style="width: 37%;margin-left: 30pc;margin-top: 14pc;background-color: #9c0000;color: white;padding-top: 1pc;padding-bottom: 3pc;padding-left: 1pc;">
-		<h3 style="color: white;">Administrador de inversiones</h3>
-		<h5 style="padding-top: 1pc;padding-bottom: 11px;">LogIn</h5>
-		<div>
-			<div style="padding-bottom: 1pc;">
-				<label>Username:</label>
-				<input type="text" name="username" ng-model="user.username" style="color:black;">
-			</div>
-			<div>
-				<label>Password:</label>
-				<input type="password" name="password" ng-model="user.password" style="color:black;">			
-			</div>
-		</div>
-		<div style="margin-top: 2pc;">
-			<button type="button" ng-click="logIn(user)" style="padding: 6px;background-color: white;color: #9c0000;font-weight: 900;">LogIn</button>
-		</div>
-	</div>
-</div>
+<form>
+    <header>Administrador de inversiones</header>
+    <label>Username <span>*</span></label>
+    <input type="text" name="username" ng-model="user.username" style="color:black;">
+    <label>Password <span>*</span></label>
+    <input type="password" name="password" ng-model="user.password" style="color:black;">
+    <button type="button" ng-click="logIn(user)">LogIn</button>
+</form>
 <!-- FOOTER -->
-		<footer ng-include="'views/headerLogOut.jsp'"></footer>		
+<footer ng-include="'views/headerLogOut.jsp'"></footer>
 <!-- FIN FOOTER -->
-
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- LODASH JS -->
 <script type="text/javascript" src="js/ajaxResponse.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
-
 </body>
 </html>

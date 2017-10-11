@@ -30,8 +30,8 @@ app.controller('logInController', [ '$scope', '$http', function($scope, $http) {
 				}).success(function (data) {
 					window.location.href="/index";
 					winwodw.location.assign(window.location.href)
-			console.log("Se logeo correctamente");
 		}).error(function(response){
+			console.log(response);
 			alert("Error al logearse.");
 		});
 	}
