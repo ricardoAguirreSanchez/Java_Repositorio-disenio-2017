@@ -20,7 +20,7 @@ public class LogInController {
 
 	 @RequestMapping(value="/logIn",method = RequestMethod.POST)
 	    public String homepage(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password) throws IOException, ServletException{
-	    	Repositorio	repo = new Repositorio("DDS_TEST");
+	    	Repositorio	repo = new Repositorio("DDS");
 	    	Usuarios usuarios = new Usuarios(repo.getEntityManager());
 	    	response.setContentType("text/html");
 	    	String redireccion="/";

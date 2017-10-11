@@ -21,8 +21,11 @@ public class Usuarios extends Repositorio {
     }
 
     public Usuario buscarPorUserAndPassword(String user, String password){
-    	 Usuario query = (Usuario) em.createQuery("SELECT u FROM USUARIO u where t.mail = ? and t.password = ?").setParameter(0, user).setParameter(1, password).getSingleResult();
-    	return query;
+        Usuario userResult = (Usuario) em.createQuery("SELECT u FROM Usuario u where u.mail = ? and u.password = ?")
+                .setParameter(0, user)
+                .setParameter(1, password)
+                .getSingleResult();
+        return userResult;
     }
     
     public void persistir(Usuario usuario) {
