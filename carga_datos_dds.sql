@@ -7,7 +7,7 @@ VALUES
     (3, 'Maria', 'Victoria', 'victoria@gmail.com', 'acceso678'),
     (4, 'Diego', 'Milito', 'milito@gmail.com', 'milito22'),
     (5, 'Bill', 'Gates', 'gates@gmail.com', 'billybilly'),
-    (6, 'Pepe', 'Prueba', 'pepe@gmail.com', 'pepito');
+    (6, 'Pepe', 'Prueba', 'pepe@gmail.com', 'pepito'),
     (7, 'admin', 'admin', 'admin','admin');
 
 INSERT INTO EMPRESA (id, nombre, capital_contable, total_pasivo, fecha_creacion)
