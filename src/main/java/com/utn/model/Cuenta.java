@@ -1,14 +1,13 @@
 package com.utn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.StringJoiner;
 
-@Component
 @Entity
-@Table(name = "CUENTA")
 public class Cuenta {
 
 	@Id
@@ -19,6 +18,7 @@ public class Cuenta {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
+	@JsonIgnore
 	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
 	private List<CuentaValores> cuentaValores;
 

@@ -23,7 +23,7 @@ public class MetodologiasTest {
     private MetodologiaDAO metodologiaDAO;
     private MetodologiaServiceImplementation metodologiaServiceImplementation;
     private Repositorio repositorio;
-
+/*
 
     @Before
     public void setup(){
@@ -108,5 +108,5 @@ public class MetodologiasTest {
         metodologiaServiceImplementation.getMetodologias();
         System.out.println(metodologiaServiceImplementation.getMetodologias());
     }
-
+*/
 }

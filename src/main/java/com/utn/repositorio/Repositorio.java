@@ -11,11 +11,12 @@ import javax.persistence.Persistence;
 @Component
 public class Repositorio {
 
-    private Usuarios usuarios;
+  /*  private Usuarios usuarios;
     private Empresas empresas;
     private Cuentas cuentas;
     private Indicadores indicadores;
     private Metodologias metodologias;
+    private CuentasValores cuentasValores;
     protected EntityManager em;
     private String dbInstance;
 
@@ -56,6 +57,13 @@ public class Repositorio {
         return indicadores;
     }
 
+    public CuentasValores cuentasValores() {
+        if (cuentasValores == null) {
+            cuentasValores = new CuentasValores(getEntityManager());
+        }
+        return cuentasValores;
+    }
+
     public Metodologias metodologias() {
         if (metodologias == null) {
             metodologias = new Metodologias(getEntityManager());
@@ -69,5 +77,5 @@ public class Repositorio {
 
     public EntityManager getEntityManager() {
         return Persistence.createEntityManagerFactory(this.dbInstance).createEntityManager();
-    }
+    } */
 }

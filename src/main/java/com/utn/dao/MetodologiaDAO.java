@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+import com.utn.repositorio.Metodologias;
 import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,12 +31,9 @@ public class MetodologiaDAO {
 	private String fileName = classLoader.getResource("metodologias.json").getFile();
 	private Type jsonMetodologiaType = new TypeToken<List<Metodologia>>(){}.getType();
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-	private Repositorio repositorio;
 
 	@Autowired
-	public MetodologiaDAO(Repositorio repositorio){
-		this.repositorio = repositorio;
-	}
+	private Metodologias metodologias;
 
 	private List<Metodologia> getMetodologiasArchivo()  {
 		List<Metodologia> metodologias = new ArrayList<>();
@@ -56,10 +55,10 @@ public class MetodologiaDAO {
 	
 	
 	public void setMetodologia(Metodologia metodologia){
-		repositorio.metodologias().persistir(metodologia);
+		metodologias.save(metodologia);
 	}
 
 	private List<Metodologia> getMetodologiasDB() {
-		return repositorio.metodologias().getMetodologias();
+		return Lists.newArrayList(metodologias.findAll());
 	}
 }

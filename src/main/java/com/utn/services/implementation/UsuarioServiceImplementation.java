@@ -27,6 +27,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
 
     @Override
     public Usuario getUsuario(String mail, String password) {
+
         return usuarioDAO.getUsuario(mail, password);
     }
 }

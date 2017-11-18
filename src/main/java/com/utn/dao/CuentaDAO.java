@@ -1,11 +1,13 @@
 package com.utn.dao;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Cuenta;
 import com.utn.model.CuentaValores;
+import com.utn.repositorio.Cuentas;
 import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,10 +30,7 @@ public class CuentaDAO {
 
 
 	@Autowired
-	public CuentaDAO(Repositorio repositorio){
-		this.repositorio = repositorio;
-	}
-
+	private Cuentas cuentas;
 
 	public List<Cuenta> getCuentas()  {
 		List<Cuenta> listaCuentas = new ArrayList<>();
@@ -82,7 +81,7 @@ public class CuentaDAO {
 
 	}
 	private List<Cuenta> getCuentasDB() {
-		return repositorio.cuentas().getCuentas();
+		return Lists.newArrayList(cuentas.findAll());
 	}
 
 	private List<Cuenta> getCuentasArchivo() {
@@ -96,9 +95,11 @@ public class CuentaDAO {
 		return cuentas;
 	}
 
-	public void addCuenta(Cuenta cuenta) {
-		repositorio.cuentas().persistir(cuenta);
+	public void persist(Cuenta cuenta) {
+		cuentas.save(cuenta);
 	}
+
+	public Cuenta getCuentaById(long id) { return cuentas.findOne(id);}
 }
 
 

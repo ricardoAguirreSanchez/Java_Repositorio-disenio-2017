@@ -18,7 +18,7 @@ public class IndicadorDAOTest {
     private Repositorio repositorio;
     private static final int CANTIDAD_INDICADORES_ARCHIVO = 4;
 
-    @Before
+  /*  @Before
     public void setup(){
         repositorio = new Repositorio("DDS_TEST");
         indicadorDAO = new IndicadorDAO(repositorio);
@@ -40,6 +40,6 @@ public class IndicadorDAOTest {
         indicadorDAO.getIndicadores().forEach(indicador ->
                 Assert.assertTrue(compiler.isIndicadorValido(indicador.getExpresion())));
     }
-
+*/
 
 }

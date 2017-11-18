@@ -1,7 +1,11 @@
 package com.utn.dao;
 
+import com.google.common.collect.Lists;
+import com.utn.writer.CuentaValorWriter;
 import com.utn.model.Usuario;
-import com.utn.repositorio.Repositorio;
+import com.utn.repositorio.Usuarios;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,18 +17,16 @@ import java.util.List;
 @Component
 public class UsuarioDAO {
 
-    private Repositorio repositorio;
+    private static final Logger log = LoggerFactory.getLogger(CuentaValorWriter.class);
 
     @Autowired
-    public UsuarioDAO(Repositorio repositorio){
-        this.repositorio = repositorio;
-    }
+    private Usuarios usuarios;
 
     public List<Usuario> getUsuarios()  {
-        return repositorio.usuarios().getUsuarios();
+        return Lists.newArrayList(usuarios.findAll());
     }
 
     public Usuario getUsuario(String mail, String password) {
-        return repositorio.usuarios().buscarPorMailYPassword(mail, password);
+        return  usuarios.findByMailAndPassword(mail,password).stream().findFirst().get();
     }
 }

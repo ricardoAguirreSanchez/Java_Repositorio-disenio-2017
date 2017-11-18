@@ -1,9 +1,11 @@
 package com.utn.dao;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Indicador;
+import com.utn.repositorio.Indicadores;
 import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,12 +23,9 @@ public class IndicadorDAO {
     private String fileName = classLoader.getResource("indicadores.json").getFile();
     private Type jsonCuentaType = new TypeToken<List<Indicador>>(){}.getType();
     private Gson gson = new Gson();
-    private Repositorio repositorio;
 
     @Autowired
-    public IndicadorDAO(Repositorio repositorio){
-        this.repositorio = repositorio;
-    }
+    private Indicadores indicadores;
 
     private List<Indicador> getIndicadoresArchivo(){
         List<Indicador> indicadores = new ArrayList<>();
@@ -40,7 +39,7 @@ public class IndicadorDAO {
     }
 
     private List<Indicador> getIndicadoresDB() {
-        return repositorio.indicadores().getIndicadores();
+        return Lists.newArrayList(indicadores.findAll());
     }
 
     public List<Indicador> getIndicadores()  {
@@ -54,7 +53,7 @@ public class IndicadorDAO {
         Indicador in= new Indicador();
         in.setExpresion(indicador);
         in.setNombre(nombre);
-        repositorio.indicadores().persistir(in);
+        indicadores.save(in);
     }
 }
 

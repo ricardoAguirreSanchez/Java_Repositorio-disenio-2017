@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class CuentaServiceImplementation implements CuentaService{
 
+    @Autowired
     private final CuentaDAO cuenta;
 
-    @Autowired
     public CuentaServiceImplementation(CuentaDAO cuenta) {
         this.cuenta = cuenta;
     }

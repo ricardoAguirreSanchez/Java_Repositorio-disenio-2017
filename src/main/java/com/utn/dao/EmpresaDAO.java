@@ -1,11 +1,13 @@
 package com.utn.dao;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Cuenta;
 import com.utn.model.Empresa;
+import com.utn.repositorio.Empresas;
 import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,16 +26,18 @@ public class EmpresaDAO {
 	private ClassLoader classLoader = getClass().getClassLoader();
 	private String fileName = classLoader.getResource("empresas.json").getFile();
 	private Type jsonEmpresaType = new TypeToken<List<Empresa>>() {}.getType();
-	private Repositorio repositorio;
 
 	//El setDateFormat permite parsear a tipo Date, se puede buscar como usar otro tipo de dato también
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
+	@Autowired
+	private Empresas empresas;
 
 	@Autowired
-	public EmpresaDAO(Repositorio repositorio){
-		this.repositorio = repositorio;
-	}
+	private CuentaDAO cuentaDAO;
+
+	public EmpresaDAO( ){
+			}
 
 	public List<Empresa> getEmpresas() {
 		List<Empresa> listaEmpresas = new ArrayList<>();
@@ -43,11 +47,11 @@ public class EmpresaDAO {
 	}
 
 	private List<Empresa> getEmpresasDB() {
-		return repositorio.empresas().getEmpresas();
+		return Lists.newArrayList(empresas.findAll());
 	}
 
 	private List<Empresa> getEmpresasArchivo() {
-		List<Empresa> listaEmpresas = new ArrayList<Empresa>();
+		List<Empresa> listaEmpresas = new ArrayList<>();
 		try {
 			JsonReader reader = new JsonReader(new FileReader(fileName));
 			listaEmpresas = gson.fromJson(reader, jsonEmpresaType);
@@ -56,7 +60,7 @@ public class EmpresaDAO {
 		}
 		return listaEmpresas;
 	}
-
+/*
 	//devuelve la empresa mas antigua o null
 	public Empresa getEmpresaMasAntigua() {
 		List<Empresa> listaEmpresas = this.getEmpresas();
@@ -186,7 +190,6 @@ public class EmpresaDAO {
 
 	private Double obtenerMargenTotal(Empresa unaEmpresa) {
 		Double costTotal = (double) 0;
-		CuentaDAO cuentaDAO = new CuentaDAO(this.repositorio);
 		List<Cuenta> listaCuentas = cuentaDAO.getCuentas();
 		for (Long idCuenta : unaEmpresa.getListaIdCuentas()) {
 			//busca para cada una de las cuentas, las q pertenecen a la empresa y suma sus cost
@@ -203,7 +206,6 @@ public class EmpresaDAO {
 
 	private Double obtenerROETotal(Empresa unaEmpresa) {
 		Double roeTotal = (double) 0;
-		CuentaDAO cuentaDAO = new CuentaDAO(this.repositorio);
 		List<Cuenta> listaCuentas = cuentaDAO.getCuentas();
 		for (Long idCuenta : unaEmpresa.getListaIdCuentas()) {
 			//busca para cada una de las cuentas, las q pertenecen a la empresa y suma sus roes
@@ -215,9 +217,9 @@ public class EmpresaDAO {
 
 		}
 		return roeTotal;
-	}
+	}*/
 
 	public void addEmpresa(Empresa empresa) {
-		repositorio.empresas().persistir(empresa);
+		empresas.save(empresa);
 	}
 }

@@ -10,6 +10,9 @@ app.controller('cuentaPageController',['$rootScope','$scope', '$http','ngTablePa
         $scope.valorSelected = null;
         $scope.indicadorSelected = null;
 
+         $scope.cuentaValores = null;
+
+
         $scope.setClickedRow = function(index){
             $scope.indicadorSelected= $scope.indicadores[index];
             $scope.selectedRow = index;
@@ -18,24 +21,30 @@ app.controller('cuentaPageController',['$rootScope','$scope', '$http','ngTablePa
             $scope.valorSelected= $scope.cuentaPage.valores[index];
             $scope.selectedRowCuenta = index;
         }
+
+        $rootScope.cargarCuentaValores = function(id) {
+            console.log("hola que tal tu como estas")
+            $http.get('/cuentaValores/' + id).success(function (data) {
+                $scope.cuentaValores = data;})
+        }
         $rootScope.cargarNuevoId = function(){
         	$scope.id=servicioCuentaIndicador.getId();
-
+            $rootScope.cargarCuentaValores($scope.id);
 
             $http.get('/cuentas/' + $scope.id).success(function (data) {
-                console.log(data);
                 $scope.cuentaPage = {
                     empresa: data.empresa,
                     nombre: data.tipoCuenta,
-                    valores: data.cuentaValores
+                    valores: $scope.cuentaValores
                 };
+
                 $scope.cuentaPageTable = new ngTableParams({
                     page : 1,
                     count : 10,
                     sorting:{}
                 }, {
-                    total:  data.cuentaValores.length,
-                    dataset: data.cuentaValores
+                    total: $scope.cuentaValores.length,
+                    dataset: $scope.cuentaValores
                 });
             });
 

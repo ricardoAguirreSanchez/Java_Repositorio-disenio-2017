@@ -1,6 +1,6 @@
 USE dds_utn;
 
-INSERT INTO USUARIO (id, nombre, apellido, mail, password)
+INSERT INTO usuario (id, nombre, apellido, mail, password)
 VALUES
     (1, 'Juan', 'Perez', 'perez@gmail.com', 'pass123'),
     (2, 'Marcos', 'Garcia', 'garcia@gmail.com', 'contra455'),
@@ -10,7 +10,7 @@ VALUES
     (6, 'Pepe', 'Prueba', 'pepe@gmail.com', 'pepito'),
     (7, 'admin', 'admin', 'admin','admin');
 
-INSERT INTO EMPRESA (id, nombre, capital_contable, total_pasivo, fecha_creacion)
+INSERT INTO empresa (id, nombre, capital_contable, total_pasivo, fecha_creacion)
 VALUES
     (1, 'Sony', 10000, 50000, '2004-05-15'),
     (2, 'Samsung', 50000, 500000, '2016-12-12'),
@@ -18,8 +18,8 @@ VALUES
     (4, 'Axxion', 910000, 150000, '2016-05-19'),
     (5, 'Microsoft', 10000100, 100000, '1995-02-18'),
     (6, 'Apple', 100000, 50000, '1998-04-30');
-    
-INSERT INTO CUENTA (id, tipo_cuenta, empresa_id)
+
+INSERT INTO cuenta (id, tipo_cuenta, empresa_id)
 VALUES
     (1, 'SSDD', 1),
     (2, 'Darwin', 1),
@@ -30,13 +30,13 @@ VALUES
     (7, 'SSDD', 4),
     (8, 'Darwin', 5),
     (9, 'STD', 5),
-    (10, 'STD', 6), 
+    (10, 'STD', 6),
     (11, 'Darwin', 6),
     (12, 'SSDD', 5),
     (13, 'STD', 1),
     (14, 'SSDD', 6);
-    
-INSERT INTO CUENTA_VALORES (id, cost, gross_booking, profit, roi, fecha_fin, fecha_inicio, cuenta_id)
+
+INSERT INTO cuenta_valores (id, cost, gross_booking, profit, roi, fecha_fin, fecha_inicio, cuenta_id)
 VALUES
     (1, 120, 12100, 32, 1.3, '2017-09-12', '2017-07-04', 1),
     (2, 120, 1200, 312350, 1.5, '2017-10-12', '2017-08-04', 1),
@@ -80,11 +80,11 @@ VALUES
     (40, 287, 1200, 250, 1.2, '2017-10-14', '2017-06-04', 13),
     (41, 489, 1200, 250, 1.2, '2017-10-15', '2017-06-04', 14),
     (42, 120, 15200, 250, 1.2, '2017-10-16', '2017-06-04', 14);
-    
 
-INSERT INTO INDICADOR (id, nombre, expresion, usuario_id)
+
+INSERT INTO indicador (id, nombre, expresion, usuario_id)
 VALUES
-    (1, 'Calculo del doble de ROI', 'ROI * 2', 1),
+    (1, 'Calculo del doble de ROI NICO PRUEBA', 'ROI * 2', 1),
     (2, 'Calculo del ROI', 'GROSS_BOOKING * 0.5 + 15',2),
     (3, 'Calculo de Profit', 'GROSS_BOOKING - COST', 3),
     (4, 'Calculo de Cost', 'COST * 1.5', 4),
@@ -95,17 +95,17 @@ VALUES
     (9, 'Calculo de Profit', 'GROSS_BOOKING - COST', 4),
     (10, 'Calculo de Cost', 'COST * 1.5', 5),
     (11, 'Calculo de Cost', 'COST * 1.5', 1);
-    
 
-INSERT INTO METODOLOGIA (id, nombre, usuario_id)
+
+INSERT INTO metodologia (id, nombre, usuario_id)
 VALUES
     (1, "Warrent Buffet", 1),
     (2, "Warrent Buffet",2),
     (10, "Warrent Buffet", 3),
     (11, "Warrent Buffet", 4);
-    
-    
-INSERT INTO Metodologia_condiciones (Metodologia_id, condiciones)
+
+
+INSERT INTO metodologia_condiciones (Metodologia_id, condiciones)
 VALUES
     (1, "Maximizar ROE,Minimizar dueda,Margenes consistentemente crecientes,Longevidad"),
     (2, "Maximizar ROE,Minimizar dueda,Margenes consistentemente crecientes,Longevidad"),

@@ -8,9 +8,7 @@ import java.util.StringJoiner;
 /**
  * Created by nicolas on 22/05/17.
  */
-@Component
 @Entity
-@Table(name = "INDICADOR")
 public class Indicador {
 
     @Id

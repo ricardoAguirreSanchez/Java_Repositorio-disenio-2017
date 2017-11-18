@@ -8,7 +8,6 @@ import java.util.List;
  * Created by nicolaslamas on 16/08/17.
  */
 @Entity
-@Table(name = "USUARIO")
 public class Usuario {
 
     @Id

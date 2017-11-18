@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name ="EMPRESA")
 public class Empresa {
 
 	@Id
@@ -21,8 +20,6 @@ public class Empresa {
 	private Double totalPasivo;
 	@Column(name = "capital_contable")
 	private Double capitalContable;
-	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-	private List<Cuenta> cuentas;
 	
 	public Double getTotalPasivo() {
 		return totalPasivo;
@@ -35,15 +32,6 @@ public class Empresa {
 	}
 	public void setCapitalContable(Double capitalContable) {
 		this.capitalContable = capitalContable;
-	}
-	
-	
-	
-	public List<Long> getListaIdCuentas() {
-		return null;
-	}
-	public void setListaIdCuentas(ArrayList<Long> listaNombreCuentas) {
-
 	}
 	public Date getFechaCreacion() {
 		return fechaCreacion;

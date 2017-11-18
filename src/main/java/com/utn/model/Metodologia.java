@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "METODOLOGIA")
 public class Metodologia {
 
 	@Id

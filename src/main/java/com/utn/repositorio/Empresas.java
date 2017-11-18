@@ -2,6 +2,7 @@ package com.utn.repositorio;
 
 import com.utn.model.Empresa;
 import com.utn.model.Usuario;
+import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -10,9 +11,9 @@ import java.util.List;
 /**
  * Created by nicolaslamas on 23/08/17.
  */
-public class Empresas  extends Repositorio {
+public interface Empresas  extends CrudRepository<Empresa, Long>{
 
-    Empresas(EntityManager em) {
+ /*   Empresas(EntityManager em) {
         super();
         this.em = em;
     }
@@ -29,7 +30,7 @@ public class Empresas  extends Repositorio {
     public List<Empresa> getEmpresas() {
         TypedQuery<Empresa> query = em.createQuery("SELECT u FROM Empresa u", Empresa.class);
         return query.getResultList();
-    }
+    } */
 }
 
 

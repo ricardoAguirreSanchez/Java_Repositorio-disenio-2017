@@ -1,5 +1,6 @@
 package com.utn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.utn.indicadores.resolver.NumericVariableResolver;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +13,10 @@ import java.util.StringJoiner;
  * Created by nicolas on 22/05/17.
  */
 
-@Component
 @Entity
-@Table(name = "CUENTA_VALORES")
+@Table(uniqueConstraints={
+        @UniqueConstraint(columnNames = {"cuenta_id", "fecha_inicio", "fecha_fin"})
+})
 public class CuentaValores implements NumericVariableResolver {
 
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -33,7 +35,15 @@ public class CuentaValores implements NumericVariableResolver {
     private Double cost;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cuenta_id", referencedColumnName = "id")
-    private Cuenta cuenta;
+    protected Cuenta cuenta;
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
 
     public Date getFechaInicio() {
         return fechaInicio;
@@ -98,5 +108,13 @@ public class CuentaValores implements NumericVariableResolver {
                 .add("profit= " + profit)
                 .add("cost= " + cost)
                 .toString();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
