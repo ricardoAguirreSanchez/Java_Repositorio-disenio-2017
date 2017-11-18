@@ -1,19 +1,7 @@
 package com.utn.metodologias;
 
-import com.utn.dao.CatalogoReglasDAO;
 import com.utn.dao.MetodologiaDAO;
-import com.utn.model.Empresa;
-import com.utn.model.Metodologia;
-import com.utn.repositorio.Repositorio;
-import com.utn.services.implementation.CatalogoReglasImplementation;
 import com.utn.services.implementation.MetodologiaServiceImplementation;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by nicolaslamas on 06/09/17.
@@ -22,7 +10,6 @@ public class MetodologiasTest {
 
     private MetodologiaDAO metodologiaDAO;
     private MetodologiaServiceImplementation metodologiaServiceImplementation;
-    private Repositorio repositorio;
 /*
 
     @Before

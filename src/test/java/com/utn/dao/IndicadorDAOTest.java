@@ -1,21 +1,11 @@
 package com.utn.dao;
 
-import com.utn.indicadores.IndicadorCompiler;
-import com.utn.repositorio.Repositorio;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 /**
  * Created by nicolas on 22/05/17.
  */
 public class IndicadorDAOTest {
 
     private IndicadorDAO indicadorDAO;
-    private Repositorio repositorio;
     private static final int CANTIDAD_INDICADORES_ARCHIVO = 4;
 
   /*  @Before

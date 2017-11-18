@@ -12,24 +12,4 @@ import java.util.List;
  */
 public interface Metodologias  extends CrudRepository<Metodologia, Long> {
 
-/*
-    public Metodologias(EntityManager em) {
-        super();
-        this.em = em;
-    }
-
-    public Metodologia buscarPorId(Long id) {
-        return em.find(Metodologia.class, id);
-    }
-
-    public void persistir(Metodologia metodologia) {
-        em.getTransaction().begin();
-        em.persist(metodologia);
-        em.getTransaction().commit();
-    }
-
-    public List<Metodologia> getMetodologias() {
-        TypedQuery<Metodologia> query = em.createQuery("SELECT u FROM Metodologia u", Metodologia.class);
-        return query.getResultList();
-    } */
 }

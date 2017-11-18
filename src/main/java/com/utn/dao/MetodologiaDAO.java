@@ -4,12 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.utn.repositorio.Metodologias;
-import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import com.utn.model.Cuenta;
-import com.utn.model.Empresa;
-import com.utn.model.Indicador;
 import com.utn.model.Metodologia;
-import com.utn.services.implementation.CuentaServiceImplementation;
-
-import javax.persistence.Persistence;
 
 @Component
 public class MetodologiaDAO {

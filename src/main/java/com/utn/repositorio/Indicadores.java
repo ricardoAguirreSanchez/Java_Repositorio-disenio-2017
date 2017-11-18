@@ -13,24 +13,4 @@ import java.util.List;
  */
 public interface Indicadores  extends CrudRepository<Indicador, Long> {
 
-/*
-    public Indicadores(EntityManager em) {
-        super();
-        this.em = em;
-    }
-
-    public Indicador buscarPorId(Long id) {
-        return em.find(Indicador.class, id);
-    }
-
-    public void persistir(Indicador indicador) {
-        em.getTransaction().begin();
-        em.persist(indicador);
-        em.getTransaction().commit();
-    }
-
-    public List<Indicador> getIndicadores() {
-        TypedQuery<Indicador> query = em.createQuery("SELECT u FROM Indicador u", Indicador.class);
-        return query.getResultList();
-    } */
 }

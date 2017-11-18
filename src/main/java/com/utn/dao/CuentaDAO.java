@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonReader;
 import com.utn.model.Cuenta;
 import com.utn.model.CuentaValores;
 import com.utn.repositorio.Cuentas;
-import com.utn.repositorio.Repositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,8 +25,6 @@ public class CuentaDAO {
 	private Type jsonCuentaType = new TypeToken<List<Cuenta>>(){}.getType();
 	//El setDateFormat permite parsear a tipo Date, se puede buscar como usar otro tipo de dato también
 	private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-	private Repositorio repositorio;
-
 
 	@Autowired
 	private Cuentas cuentas;

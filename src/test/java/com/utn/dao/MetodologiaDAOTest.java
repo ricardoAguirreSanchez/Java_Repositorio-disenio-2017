@@ -1,18 +1,10 @@
 package com.utn.dao;
 
-import com.utn.indicadores.IndicadorCompiler;
-import com.utn.model.Metodologia;
-import com.utn.repositorio.Repositorio;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Created by nicolaslamas on 06/09/17.
  */
 public class MetodologiaDAOTest {
     private MetodologiaDAO metodologiaDAO;
-    private Repositorio repositorio;
     private static final int CANTIDAD_METODOLOGIAS_ARCHIVO = 1;
 
   /*  @Before
