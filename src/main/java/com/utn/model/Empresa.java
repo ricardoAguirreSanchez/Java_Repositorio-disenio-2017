@@ -20,7 +20,16 @@ public class Empresa {
 	private Double totalPasivo;
 	@Column(name = "capital_contable")
 	private Double capitalContable;
-	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public Double getTotalPasivo() {
 		return totalPasivo;
 	}
@@ -46,5 +55,5 @@ public class Empresa {
 		this.nombre = nombre;
 	}
 
-	
+
 }

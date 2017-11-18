@@ -2,22 +2,22 @@ USE dds_utn;
 
 INSERT INTO usuario (id, nombre, apellido, mail, password)
 VALUES
-    (1, 'Juan', 'Perez', 'perez@gmail.com', 'pass123'),
+   /* (1, 'Juan', 'Perez', 'perez@gmail.com', 'pass123'),
     (2, 'Marcos', 'Garcia', 'garcia@gmail.com', 'contra455'),
     (3, 'Maria', 'Victoria', 'victoria@gmail.com', 'acceso678'),
     (4, 'Diego', 'Milito', 'milito@gmail.com', 'milito22'),
     (5, 'Bill', 'Gates', 'gates@gmail.com', 'billybilly'),
-    (6, 'Pepe', 'Prueba', 'pepe@gmail.com', 'pepito'),
+    (6, 'Pepe', 'Prueba', 'pepe@gmail.com', 'pepito'),*/
     (7, 'admin', 'admin', 'admin','admin');
 
-INSERT INTO empresa (id, nombre, capital_contable, total_pasivo, fecha_creacion)
+INSERT INTO empresa (id, nombre, capital_contable, total_pasivo, fecha_creacion, usuario_id)
 VALUES
-    (1, 'Sony', 10000, 50000, '2004-05-15'),
-    (2, 'Samsung', 50000, 500000, '2016-12-12'),
-    (3, 'IBM', 20000, 60000, '1980-03-03'),
-    (4, 'Axxion', 910000, 150000, '2016-05-19'),
-    (5, 'Microsoft', 10000100, 100000, '1995-02-18'),
-    (6, 'Apple', 100000, 50000, '1998-04-30');
+    (1, 'Sony', 10000, 50000, '2004-05-15', 7),
+    (2, 'Samsung', 50000, 500000, '2016-12-12', 7),
+    (3, 'IBM', 20000, 60000, '1980-03-03', 7),
+    (4, 'Axxion', 910000, 150000, '2016-05-19', 7),
+    (5, 'Microsoft', 10000100, 100000, '1995-02-18', 7),
+    (6, 'Apple', 100000, 50000, '1998-04-30', 7);
 
 INSERT INTO cuenta (id, tipo_cuenta, empresa_id)
 VALUES

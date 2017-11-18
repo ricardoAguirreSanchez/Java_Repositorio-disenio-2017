@@ -32,14 +32,13 @@ public class FileSelector {
     }
 
     public List<File> getFilesToRead(){
-        System.out.println("\n\n\n\n\n\n\n\n\n\n ENTRE AL FILES TO READ \n\n\n\n");
-       List<InputFile> dbFiles = getAllFilesFromDB();
-      return  getAllFilesInFolder().stream()
-              .filter(f -> !dbFiles.stream()
-                      .map(InputFile::getName)
-                      .collect(Collectors.toList())
-                      .contains(f.getName()))
-              .collect(Collectors.toList());
+        List<InputFile> dbFiles = getAllFilesFromDB();
+        return  getAllFilesInFolder().stream()
+                .filter(f -> !dbFiles.stream()
+                        .map(InputFile::getName)
+                        .collect(Collectors.toList())
+                        .contains(f.getName()))
+                .collect(Collectors.toList());
     }
 
     public void persistUsedFiles() {
