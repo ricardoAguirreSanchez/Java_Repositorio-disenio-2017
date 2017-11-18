@@ -13,6 +13,7 @@ import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
@@ -24,6 +25,7 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -40,17 +42,15 @@ public class BatchCuentasConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(BatchCuentasConfiguration.class);
 
+    private static final String OVERRIDDEN_BY_EXPRESSION = null;
+
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
 
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
-    @Autowired
-    public FileAppender fileAppender;
 
-    @Autowired
-    private InputFiles inputFiles;
 
     @Bean
     public ResourcelessTransactionManager resourcelessTransactionManager() {
@@ -70,10 +70,12 @@ public class BatchCuentasConfiguration {
     }
 
     @Bean
-    public FlatFileItemReader<RowCuenta> reader() throws IOException {
+    @StepScope
+    public FlatFileItemReader<RowCuenta> reader(@Value("#{jobParameters[pathToFile]}")
+                                                            String pathToFile) throws IOException {
+
         FlatFileItemReader<RowCuenta> reader = new FlatFileItemReader<>();
-        String absolutePath = fileAppender.generateAppendedFile(new FileSelector(inputFiles), "output_cuenta").getAbsolutePath();
-        reader.setResource(new FileSystemResource(absolutePath));
+        reader.setResource(new FileSystemResource(pathToFile));
         reader.setLineMapper(new DefaultLineMapper<RowCuenta>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
                 setNames(new String[] { "id","fechaInicio","fechaFin","roi","grossBooking","profit","cost"});
@@ -81,6 +83,7 @@ public class BatchCuentasConfiguration {
             setFieldSetMapper(new BeanWrapperFieldSetMapper<RowCuenta>() {{
                 setTargetType(RowCuenta.class);
             }});
+
         }});
         return reader;
     }
@@ -108,23 +111,10 @@ public class BatchCuentasConfiguration {
     public Step step1() throws Exception {
         return stepBuilderFactory.get("step1")
                 .<RowCuenta, CuentaValorToWrite> chunk(10)
-                .reader(reader())
+                .reader(reader(OVERRIDDEN_BY_EXPRESSION))
                 .processor(processor())
                 .writer(writer())
                 .build();
-    }
-
-
-    public void perform() throws Exception {
-
-        log.error("Job Started at :" + new Date());
-
-        JobParameters param = new JobParametersBuilder().addString("JobID", String.valueOf(System.currentTimeMillis()))
-                .toJobParameters();
-
-        JobExecution execution = jobLauncher(jobRepository()).run(importUserJob(), param);
-
-        log.error("Job finished with status :" + execution.getStatus());
     }
 
 }

@@ -25,11 +25,14 @@ public class FileSelector {
     }
 
     private List<File> getAllFilesInFolder() {
+        //TODO fix esta excepcion cuadno no existe un archivo adentro de la carpeta CSV
         File[] files = new File(getClass().getClassLoader().getResource("csv/").getFile()).listFiles();
+
         return Arrays.asList(files);
     }
 
     public List<File> getFilesToRead(){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n ENTRE AL FILES TO READ \n\n\n\n");
        List<InputFile> dbFiles = getAllFilesFromDB();
       return  getAllFilesInFolder().stream()
               .filter(f -> !dbFiles.stream()
