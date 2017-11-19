@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface Cuentas extends CrudRepository<Cuenta, Long>{
 
+    List<Cuenta> findByEmpresaId(long empresaId);
 }

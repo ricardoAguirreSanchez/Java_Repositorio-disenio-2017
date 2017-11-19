@@ -56,4 +56,7 @@ public class Empresa {
 	}
 
 
+	public long getId() {
+		return id;
+	}
 }

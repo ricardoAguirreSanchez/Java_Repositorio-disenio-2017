@@ -218,4 +218,8 @@ public class EmpresaDAO {
 	public void addEmpresa(Empresa empresa) {
 		empresas.save(empresa);
 	}
+
+	public List<Empresa> getByUserId(long id) {
+		return empresas.findByUsuarioId(id);
+	}
 }

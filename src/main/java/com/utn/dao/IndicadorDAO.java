@@ -54,5 +54,9 @@ public class IndicadorDAO {
         in.setNombre(nombre);
         indicadores.save(in);
     }
+
+    public List<Indicador> getByUserId(long id) {
+        return indicadores.findByUsuarioId(id);
+    }
 }
 

@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface Indicadores  extends CrudRepository<Indicador, Long> {
 
+    List<Indicador> findByUsuarioId(long usuarioId);
 }

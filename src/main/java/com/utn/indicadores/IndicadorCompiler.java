@@ -6,10 +6,12 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by nicolas on 22/05/17.
  */
+@Component
 public class IndicadorCompiler {
 
     public boolean isIndicadorValido(String inputString) {
