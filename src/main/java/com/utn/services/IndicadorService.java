@@ -14,4 +14,7 @@ public interface IndicadorService {
     List<Indicador> getIndicadores();
 
     void setIndicador(String nombre, String indicador);
+
+    Double evaluarIndicador(long indicadorId, long cuentaId, long cuentaValorId);
 }
+

@@ -84,9 +84,9 @@ VALUES
 
 INSERT INTO indicador (id, nombre, expresion, usuario_id)
 VALUES
-    (1, 'Calculo del doble de ROI NICO PRUEBA', 'ROI * 2', 1),
-    (2, 'Calculo del ROI', 'GROSS_BOOKING * 0.5 + 15',2),
-    (3, 'Calculo de Profit', 'GROSS_BOOKING - COST', 3),
+    (1, 'Calculo del doble de ROI NICO PRUEBA', 'ROI * 2', 7),
+    (2, 'Calculo del ROI', 'GROSS_BOOKING * 0.5 + 15',7),
+    (3, 'Calculo de Profit', 'GROSS_BOOKING - COST', 7),
     (4, 'Calculo de Cost', 'COST * 1.5', 4),
     (5, 'Calculo de Profit', 'GROSS_BOOKING - COST', 5),
 	(6, 'Calculo de ROI', 'GROSS_BOOKING * 0.5 + 15', 1),

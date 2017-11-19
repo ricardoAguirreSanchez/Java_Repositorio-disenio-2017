@@ -12,19 +12,18 @@ public class IndicadorAplicado {
     private long id;
     @Column(name = "valor")
     private Double valor;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "cuenta_id", referencedColumnName = "id")
     private Cuenta cuenta;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "indicador_id", referencedColumnName = "id")
     private Indicador indicador;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "cuentaValor_id", referencedColumnName = "id")
+    private CuentaValores cuentaValor;
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Double getValor() {
@@ -49,5 +48,13 @@ public class IndicadorAplicado {
 
     public void setIndicador(Indicador indicador) {
         this.indicador = indicador;
+    }
+
+    public CuentaValores getCuentaValor() {
+        return cuentaValor;
+    }
+
+    public void setCuentaValor(CuentaValores cuentaValor) {
+        this.cuentaValor = cuentaValor;
     }
 }

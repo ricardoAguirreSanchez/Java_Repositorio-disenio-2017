@@ -28,4 +28,8 @@ public class IndicadorAplicadoDAO {
     public void persist(IndicadorAplicado ia) {
         indicadoresAplicados.save(ia);
     }
+
+    public IndicadorAplicado getByCuentaIdIndicadorIdCuentaValorId(long cuentaId, long indicadorId, long cuentaValorId) {
+        return indicadoresAplicados.findByCuentaIdAndIndicadorIdAndCuentaValorId(cuentaId, indicadorId, cuentaValorId);
+    }
 }

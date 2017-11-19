@@ -20,6 +20,7 @@ public class CuentaValoresDAO {
         return cuentasValores.findCuentaValoresByCuentaId(cuentaId);
     }
     public void persist(CuentaValores cv) {
+
         cuentasValores.save(cv);
     }
 

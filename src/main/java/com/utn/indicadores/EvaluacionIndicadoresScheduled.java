@@ -24,6 +24,7 @@ public class EvaluacionIndicadoresScheduled {
     private final UsuarioDAO usuarioDAO;
     private final IndicadorAplicadoDAO indicadorAplicadoDAO;
     private final IndicadorCompiler indicadorCompiler;
+    private final CuentaValoresDAO cuentaValoresDAO;
 
 
     private static final Logger log = LoggerFactory.getLogger(BatchCuentasConfiguration.class);
@@ -32,13 +33,14 @@ public class EvaluacionIndicadoresScheduled {
     @Autowired
     public EvaluacionIndicadoresScheduled(IndicadorDAO indicadorDAO, CuentaDAO cuentaDAO, EmpresaDAO empresaDAO,
                                           UsuarioDAO usuarioDAO, IndicadorAplicadoDAO indicadorAplicadoDAO,
-                                          IndicadorCompiler indicadorCompiler) {
+                                          IndicadorCompiler indicadorCompiler, CuentaValoresDAO cuentaValoresDAO) {
         this.indicadorDAO = indicadorDAO;
         this.cuentaDAO = cuentaDAO;
         this.empresaDAO = empresaDAO;
         this.usuarioDAO = usuarioDAO;
         this.indicadorAplicadoDAO = indicadorAplicadoDAO;
         this.indicadorCompiler = indicadorCompiler;
+        this.cuentaValoresDAO = cuentaValoresDAO;
     }
 
 
@@ -51,12 +53,11 @@ public class EvaluacionIndicadoresScheduled {
                 List<Indicador> indicadoresUsuario = indicadorDAO.getByUserId(usuario.getId());
                 List<Empresa> empresasUsuario = empresaDAO.getByUserId(usuario.getId());
                 List<Cuenta> cuentasEmpresas = new ArrayList<>();
-                empresasUsuario.forEach(em -> {
-                    cuentasEmpresas.addAll(cuentaDAO.getByEmpresaId(em.getId()));
-                });
-                cuentasEmpresas.forEach(cuenta -> indicadoresUsuario
-                        .forEach(indicador -> cuenta.getCuentaValores()
-                                .forEach(cv -> applyAndSave(cuenta, indicador, cv))));
+                empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentaDAO.getByEmpresaId(em.getId())));
+                cuentasEmpresas.forEach(cuenta -> {
+                    List<CuentaValores> cuentaValores = cuentaValoresDAO.getValoresByCuentaId(cuenta.getId());
+                    indicadoresUsuario.forEach(indicador ->
+                            cuentaValores.forEach(cv -> applyAndSave(cuenta, indicador, cv)));});
         });
         log.info("Finished pre loading indicators");
 
