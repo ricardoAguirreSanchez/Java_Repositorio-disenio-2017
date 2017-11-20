@@ -13,9 +13,13 @@ import java.util.List;
 @RestController
 public class IndicadoresRestController {
 
-    @Autowired
-    private IndicadorService indicadorService;
+    private final IndicadorService indicadorService;
     private IndicadorCompiler indicadorCompiler =  new IndicadorCompiler();
+
+    @Autowired
+    public IndicadoresRestController(IndicadorService indicadorService) {
+        this.indicadorService = indicadorService;
+    }
 
     @RequestMapping(value= "/indicadores", method= RequestMethod.GET)
     public List<Indicador> getIndicadores(){
@@ -23,9 +27,10 @@ public class IndicadoresRestController {
     }
 
     @RequestMapping(value= "/indicadores", method= RequestMethod.POST)
-    public boolean postIndicadores(@RequestParam String nombre, @RequestParam String indicador){
+    public boolean postIndicadores(@RequestParam String nombre, @RequestParam String indicador, @RequestParam String userId){
         if(indicadorCompiler.isIndicadorValido(indicador)){
             indicadorService.setIndicador(nombre, indicador);
+            indicadorService.preLoadIndicador(userId, nombre, indicador);
             return true;
         }
         return false;

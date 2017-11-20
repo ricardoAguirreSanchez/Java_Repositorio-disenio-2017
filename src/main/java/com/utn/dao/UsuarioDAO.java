@@ -29,4 +29,8 @@ public class UsuarioDAO {
     public Usuario getUsuario(String mail, String password) {
         return  usuarios.findByMailAndPassword(mail,password).stream().findFirst().get();
     }
+
+    public Usuario getUsuarioById(String userId) {
+        return usuarios.findOne(Long.valueOf(userId));
+    }
 }

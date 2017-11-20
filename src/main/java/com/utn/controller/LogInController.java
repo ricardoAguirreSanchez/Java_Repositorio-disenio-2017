@@ -28,8 +28,6 @@ public class LogInController {
 		HttpSession sesion = request.getSession();
 
 		//TODO validar usuario y contraseña para evitar "ataques"
-		//TODO aca se buscaria el usuario en la tabla USUARIO de la base de datos
-
 		if((usuarioService.getUsuario(username, password) != null) && sesion.getAttribute("usuario")==null){
 			sesion.setAttribute("usuario", username);
 			redireccion="redirect:/index";

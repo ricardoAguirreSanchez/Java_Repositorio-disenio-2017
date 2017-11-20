@@ -27,7 +27,6 @@ public class FileSelector {
     private List<File> getAllFilesInFolder() {
         //TODO fix esta excepcion cuadno no existe un archivo adentro de la carpeta CSV
         File[] files = new File(getClass().getClassLoader().getResource("csv/").getFile()).listFiles();
-
         return Arrays.asList(files);
     }
 

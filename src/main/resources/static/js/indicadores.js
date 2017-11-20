@@ -2,10 +2,12 @@ app.controller('indicadorController',['$rootScope','$scope','ngTableParams', 'va
 	function($rootScope, $scope, ngTableParams, variacionFunction, $http,servicioCuentaIndicador) {
 
 
+    //TODO fix, es necesario enviar el userId correcto
         $scope.enviarIndicador=function(nombre ,indicador){
             var parametros={
                 indicador: indicador,
-                nombre: nombre
+                nombre: nombre,
+                userId: '7'
             };
             $http({
                 url:'/indicadores',
@@ -18,7 +20,6 @@ app.controller('indicadorController',['$rootScope','$scope','ngTableParams', 'va
                     result = "El indicador fue cargado con exito";
                 }
                 document.getElementById('cargaCorrecta').innerHTML= result;
-                console.log("Se ha enviado correctamente el indicador: "+ response);
                 $scope.reloadIndicadores();
             });
         };

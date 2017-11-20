@@ -16,5 +16,7 @@ public interface IndicadorService {
     void setIndicador(String nombre, String indicador);
 
     Double evaluarIndicador(long indicadorId, long cuentaId, long cuentaValorId);
+
+    void preLoadIndicador(String userId, String nombre, String indicador);
 }
 
