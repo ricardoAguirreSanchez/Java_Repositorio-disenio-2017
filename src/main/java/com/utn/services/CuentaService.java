@@ -7,7 +7,5 @@ import java.util.List;
 
 @Service
 public interface CuentaService {
-
     List<Cuenta> getCuentas();
-
 }

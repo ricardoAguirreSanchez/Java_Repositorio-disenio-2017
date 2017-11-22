@@ -1,5 +1,7 @@
 package com.utn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -19,8 +21,10 @@ public class Usuario {
     private String mail;
     @NotNull
     private String password;
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Indicador> indicadores;
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Metodologia> metodologias;
 

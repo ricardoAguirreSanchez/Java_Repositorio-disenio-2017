@@ -21,7 +21,7 @@ public class Cuenta {
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
 	@JsonIgnore
-	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.MERGE)
 	private List<CuentaValores> cuentaValores;
 
 	public long getId() {

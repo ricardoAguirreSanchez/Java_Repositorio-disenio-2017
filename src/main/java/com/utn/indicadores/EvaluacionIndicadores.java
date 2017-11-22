@@ -1,6 +1,5 @@
 package com.utn.indicadores;
 
-import com.utn.dao.*;
 import com.utn.model.*;
 import com.utn.repositorio.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +19,19 @@ public class EvaluacionIndicadores {
     private final Indicadores indicadores;
     private final Cuentas cuentas;
     private final Empresas empresas;
-    private final UsuarioDAO usuarioDAO;
+    private final Usuarios usuarios;
     private final CuentasValores cuentasValores;
 
     @Autowired
     public EvaluacionIndicadores(IndicadoresAplicados indicadoresAplicados, IndicadorCompiler indicadorCompiler,
                                  Indicadores indicadores, Cuentas cuentas, Empresas empresas,
-                                 UsuarioDAO usuarioDAO, CuentasValores cuentasValores) {
+                                 Usuarios usuarios, CuentasValores cuentasValores) {
         this.indicadoresAplicados = indicadoresAplicados;
         this.indicadorCompiler = indicadorCompiler;
         this.indicadores = indicadores;
         this.cuentas = cuentas;
         this.empresas = empresas;
-        this.usuarioDAO = usuarioDAO;
+        this.usuarios = usuarios;
         this.cuentasValores = cuentasValores;
     }
 
@@ -49,7 +48,7 @@ public class EvaluacionIndicadores {
     }
 
     public void evaluateAll() {
-        usuarioDAO.getUsuarios().forEach(usuario -> {
+        usuarios.findAll().forEach(usuario -> {
             List<Indicador> indicadoresUsuario = indicadores.findByUsuarioId(usuario.getId());
             List<Empresa> empresasUsuario = empresas.findByUsuarioId(usuario.getId());
             List<Cuenta> cuentasEmpresas = new ArrayList<>();
@@ -67,7 +66,7 @@ public class EvaluacionIndicadores {
         indicador.setNombre(nombre);
         indicador.setExpresion(expresion);
 
-        Usuario usuario = usuarioDAO.getUsuarioById(userId);
+        Usuario usuario = usuarios.findOne(Long.valueOf(userId));
         List<Empresa> empresasUsuario = empresas.findByUsuarioId(usuario.getId());
         List<Cuenta> cuentasEmpresas = new ArrayList<>();
         empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentas.findByEmpresaId(em.getId())));
