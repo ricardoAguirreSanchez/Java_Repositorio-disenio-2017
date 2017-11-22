@@ -1,17 +1,16 @@
 package com.utn.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import com.utn.model.Empresa;
+import com.utn.model.Metodologia;
+import com.utn.services.MetodologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.utn.model.Empresa;
-import com.utn.model.Metodologia;
-import com.utn.services.MetodologiaService;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class CompararRestController {

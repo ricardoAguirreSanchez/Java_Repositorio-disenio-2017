@@ -1,10 +1,8 @@
 package com.utn.services;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.utn.model.Cuenta;
+import java.util.List;
 
 @Service
 public interface CatalogoReglasService {

@@ -1,15 +1,12 @@
 package com.utn.services.implementation;
 
-import java.util.List;
-
+import com.utn.dao.EmpresaDAO;
+import com.utn.model.Empresa;
+import com.utn.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.utn.dao.CuentaDAO;
-import com.utn.dao.EmpresaDAO;
-import com.utn.model.Cuenta;
-import com.utn.model.Empresa;
-import com.utn.services.EmpresaService;
+import java.util.List;
 
 @Service
 public class EmpresaServiceImplementation implements EmpresaService {

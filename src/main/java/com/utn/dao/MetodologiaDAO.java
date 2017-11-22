@@ -1,21 +1,20 @@
 package com.utn.dao;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.common.collect.Lists;
-import com.utn.repositorio.Metodologias;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Metodologia;
+import com.utn.repositorio.Metodologias;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class MetodologiaDAO {

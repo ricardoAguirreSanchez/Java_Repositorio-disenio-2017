@@ -1,13 +1,10 @@
 package com.utn.services.implementation;
 
-import java.util.List;
-
+import com.utn.dao.CatalogoReglasDAO;
+import com.utn.services.CatalogoReglasService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.utn.dao.CatalogoReglasDAO;
-import com.utn.dao.CuentaDAO;
-import com.utn.model.Cuenta;
-import com.utn.services.CatalogoReglasService;
+import java.util.List;
 
 public class CatalogoReglasImplementation implements CatalogoReglasService{
 

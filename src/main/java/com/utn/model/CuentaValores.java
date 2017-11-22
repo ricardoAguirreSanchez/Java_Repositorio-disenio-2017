@@ -1,8 +1,6 @@
 package com.utn.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.utn.indicadores.resolver.NumericVariableResolver;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;

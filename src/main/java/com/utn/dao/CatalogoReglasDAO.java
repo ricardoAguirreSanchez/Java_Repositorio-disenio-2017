@@ -1,16 +1,16 @@
 package com.utn.dao;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.utn.model.Cuenta;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CatalogoReglasDAO {
 	private ClassLoader classLoader = getClass().getClassLoader();

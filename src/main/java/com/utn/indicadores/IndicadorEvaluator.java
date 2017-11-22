@@ -1,8 +1,7 @@
 package com.utn.indicadores;
 
-import com.utn.model.CuentaValores;
 import com.utn.indicadores.model.NumericVariable;
-import org.springframework.stereotype.Component;
+import com.utn.model.CuentaValores;
 
 
 public class IndicadorEvaluator extends IndicadorBaseVisitor<Double> {

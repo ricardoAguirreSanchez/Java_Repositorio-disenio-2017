@@ -18,11 +18,15 @@ public class CuentaValorWriter implements ItemWriter<CuentaValorToWrite> {
 
     private static final Logger log = LoggerFactory.getLogger(CuentaValorWriter.class);
 
-    @Autowired
-    CuentaDAO cuentaDAO;
+    private final CuentaDAO cuentaDAO;
+
+    private final CuentaValoresDAO cuentaValoresDAO;
 
     @Autowired
-    CuentaValoresDAO cuentaValoresDAO;
+    public CuentaValorWriter(CuentaDAO cuentaDAO, CuentaValoresDAO cuentaValoresDAO) {
+        this.cuentaDAO = cuentaDAO;
+        this.cuentaValoresDAO = cuentaValoresDAO;
+    }
 
     @Override
     public void write(List<? extends CuentaValorToWrite> values) throws Exception {

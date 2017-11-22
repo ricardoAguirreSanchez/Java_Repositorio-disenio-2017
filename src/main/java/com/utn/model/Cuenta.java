@@ -1,7 +1,6 @@
 package com.utn.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
