@@ -3,8 +3,11 @@ package com.utn.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.Year;
+import java.util.Calendar;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 @Entity
 public class Cuenta {
@@ -57,4 +60,13 @@ public class Cuenta {
 				.toString();
 	}
 
+	public Double totalCostLastYears(int years) {
+		return this.cuentaValores.stream().filter(cv -> cv.getFechaFin().getYear() + years <= Year.now().getValue())
+				.mapToDouble(CuentaValores::getCost).sum();
+	}
+
+	public Double totalRoiLastYears(int years) {
+		return this.cuentaValores.stream().filter(cv -> cv.getFechaFin().getYear() + years <= Year.now().getValue())
+				.mapToDouble(CuentaValores::getRoi).sum();
+	}
 }

@@ -2,6 +2,7 @@ package com.utn.indicadores;
 
 import com.utn.dao.*;
 import com.utn.model.*;
+import com.utn.repositorio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,25 +15,25 @@ import java.util.List;
 @Component
 public class EvaluacionIndicadores {
 
-    private final IndicadorAplicadoDAO indicadorAplicadoDAO;
+    private final IndicadoresAplicados indicadoresAplicados;
     private final IndicadorCompiler indicadorCompiler;
-    private final IndicadorDAO indicadorDAO;
-    private final CuentaDAO cuentaDAO;
-    private final EmpresaDAO empresaDAO;
+    private final Indicadores indicadores;
+    private final Cuentas cuentas;
+    private final Empresas empresas;
     private final UsuarioDAO usuarioDAO;
-    private final CuentaValoresDAO cuentaValoresDAO;
+    private final CuentasValores cuentasValores;
 
     @Autowired
-    public EvaluacionIndicadores(IndicadorAplicadoDAO indicadorAplicadoDAO, IndicadorCompiler indicadorCompiler,
-                                 IndicadorDAO indicadorDAO, CuentaDAO cuentaDAO, EmpresaDAO empresaDAO,
-                                 UsuarioDAO usuarioDAO, CuentaValoresDAO cuentaValoresDAO) {
-        this.indicadorAplicadoDAO = indicadorAplicadoDAO;
+    public EvaluacionIndicadores(IndicadoresAplicados indicadoresAplicados, IndicadorCompiler indicadorCompiler,
+                                 Indicadores indicadores, Cuentas cuentas, Empresas empresas,
+                                 UsuarioDAO usuarioDAO, CuentasValores cuentasValores) {
+        this.indicadoresAplicados = indicadoresAplicados;
         this.indicadorCompiler = indicadorCompiler;
-        this.indicadorDAO = indicadorDAO;
-        this.cuentaDAO = cuentaDAO;
-        this.empresaDAO = empresaDAO;
+        this.indicadores = indicadores;
+        this.cuentas = cuentas;
+        this.empresas = empresas;
         this.usuarioDAO = usuarioDAO;
-        this.cuentaValoresDAO = cuentaValoresDAO;
+        this.cuentasValores = cuentasValores;
     }
 
     private void applyAndSave(Cuenta cuenta, Indicador indicador, CuentaValores cv) {
@@ -40,21 +41,21 @@ public class EvaluacionIndicadores {
         ia.setCuenta(cuenta);
         ia.setIndicador(indicador);
         ia.setValor(indicadorCompiler.evaluarIndicador(indicador.getExpresion(), cv));
-        indicadorAplicadoDAO.persist(ia);
+        indicadoresAplicados.save(ia);
     }
 
     public void dropAllIndicadoresAplicados() {
-        indicadorAplicadoDAO.dropRows();
+        indicadoresAplicados.deleteAll();
     }
 
     public void evaluateAll() {
         usuarioDAO.getUsuarios().forEach(usuario -> {
-            List<Indicador> indicadoresUsuario = indicadorDAO.getByUserId(usuario.getId());
-            List<Empresa> empresasUsuario = empresaDAO.getByUserId(usuario.getId());
+            List<Indicador> indicadoresUsuario = indicadores.findByUsuarioId(usuario.getId());
+            List<Empresa> empresasUsuario = empresas.findByUsuarioId(usuario.getId());
             List<Cuenta> cuentasEmpresas = new ArrayList<>();
-            empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentaDAO.getByEmpresaId(em.getId())));
+            empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentas.findByEmpresaId(em.getId())));
             cuentasEmpresas.forEach(cuenta -> {
-                List<CuentaValores> cuentaValores = cuentaValoresDAO.getValoresByCuentaId(cuenta.getId());
+                List<CuentaValores> cuentaValores = cuentasValores.findCuentaValoresByCuentaId(cuenta.getId());
                 indicadoresUsuario.forEach(indicador ->
                         cuentaValores.forEach(cv -> applyAndSave(cuenta, indicador, cv)));});
         });
@@ -67,12 +68,12 @@ public class EvaluacionIndicadores {
         indicador.setExpresion(expresion);
 
         Usuario usuario = usuarioDAO.getUsuarioById(userId);
-        List<Empresa> empresasUsuario = empresaDAO.getByUserId(usuario.getId());
+        List<Empresa> empresasUsuario = empresas.findByUsuarioId(usuario.getId());
         List<Cuenta> cuentasEmpresas = new ArrayList<>();
-        empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentaDAO.getByEmpresaId(em.getId())));
+        empresasUsuario.forEach(em -> cuentasEmpresas.addAll(cuentas.findByEmpresaId(em.getId())));
 
         cuentasEmpresas.forEach(cuenta -> {
-            List<CuentaValores> cuentaValores = cuentaValoresDAO.getValoresByCuentaId(cuenta.getId());
+            List<CuentaValores> cuentaValores = cuentasValores.findCuentaValoresByCuentaId(cuenta.getId());
                     cuentaValores.forEach(cv -> applyAndSave(cuenta, indicador, cv));});
     }
 }

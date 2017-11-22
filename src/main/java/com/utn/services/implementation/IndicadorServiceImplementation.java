@@ -1,10 +1,11 @@
 package com.utn.services.implementation;
 
-import com.utn.dao.IndicadorAplicadoDAO;
-import com.utn.dao.IndicadorDAO;
 import com.utn.indicadores.EvaluacionIndicadores;
 import com.utn.model.Indicador;
+import com.utn.repositorio.Indicadores;
+import com.utn.repositorio.IndicadoresAplicados;
 import com.utn.services.IndicadorService;
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,31 +17,34 @@ import java.util.List;
 @Service
 public class IndicadorServiceImplementation implements IndicadorService{
 
-    private final IndicadorDAO indicadorDAO;
-    private final IndicadorAplicadoDAO indicadorAplicadoDAO;
+    private final Indicadores indicadores;
+    private final IndicadoresAplicados indicadoresAplicados;
     private final EvaluacionIndicadores evaluacionIndicadores;
 
     @Autowired
-    public IndicadorServiceImplementation(IndicadorDAO indicadorDAO, IndicadorAplicadoDAO indicadorAplicadoDAO,
+    public IndicadorServiceImplementation(Indicadores indicadores, IndicadoresAplicados indicadoresAplicados,
                                           EvaluacionIndicadores evaluacionIndicadores) {
-        this.indicadorDAO = indicadorDAO;
-        this.indicadorAplicadoDAO = indicadorAplicadoDAO;
+        this.indicadores = indicadores;
+        this.indicadoresAplicados = indicadoresAplicados;
         this.evaluacionIndicadores = evaluacionIndicadores;
     }
 
     @Override
     public List<Indicador> getIndicadores() {
-        return indicadorDAO.getIndicadores();
+        return Lists.newArrayList(indicadores.findAll());
     }
 
     @Override
     public void setIndicador(String nombre, String indicador) {
-        indicadorDAO.addIndicador(nombre,indicador);
+        Indicador i = new Indicador();
+        i.setNombre(nombre);
+        i.setExpresion(indicador);
+        indicadores.save(i);
     }
 
     @Override
     public Double evaluarIndicador(long indicadorId, long cuentaId, long cuentaValorId) {
-        return indicadorAplicadoDAO.getByCuentaIdIndicadorIdCuentaValorId(cuentaId, indicadorId, cuentaValorId).getValor();
+        return indicadoresAplicados.findByCuentaIdAndIndicadorIdAndCuentaValorId(cuentaId, indicadorId, cuentaValorId).getValor();
     }
 
     @Override

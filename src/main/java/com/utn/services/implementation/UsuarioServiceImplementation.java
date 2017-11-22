@@ -1,6 +1,5 @@
 package com.utn.services.implementation;
 
-import com.utn.dao.UsuarioDAO;
 import com.utn.model.Usuario;
 import com.utn.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
