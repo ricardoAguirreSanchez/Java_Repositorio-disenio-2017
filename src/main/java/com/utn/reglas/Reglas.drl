@@ -1,7 +1,10 @@
 package com.utn.reglas;
 import com.utn.model.Metodologia;
-import com.utn.reglas.Respuesta;
-import com.utn.dao.EmpresaDAO;
+import com.utn.reglas.Respuesta
+import org.springframework.beans.factory.annotation.Autowired
+import com.utn.repositorio.Empresas
+import com.utn.processor.EmpresasProcessor;
+
 
 // regla para la condicion Maximizar ROE
 // Busca la empresa que sumando los ROE de todas sus cuentas sea la mejor de los ultimos 10 años
@@ -11,9 +14,10 @@ rule "Maximizar ROE"
     	metodologia: Metodologia(metodologia.getListaCondiciones().contains("Maximizar ROE"));
         respuesta: Respuesta();
         
-    then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Maximizar ROE",empresaDAO.getEmpresaMejorROE());
+    then
+
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Maximizar ROE", processor.getEmpresaMejorROE());
     	
 end
 
@@ -25,8 +29,8 @@ rule "Minimizar deuda"
         metodologia: Metodologia(metodologia.getListaCondiciones().contains("Minimizar deuda"));
         respuesta: Respuesta();
     then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Minimizar deuda",empresaDAO.getEmpresaMenorDeuda());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Minimizar deuda",processor.getEmpresaMenorDeuda());
 end
 
 // regla para la condicion Márgenes consistentemente crecientes
@@ -39,8 +43,8 @@ rule "Margenes de ganancia"
         respuesta: Respuesta();
         
     then
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Margenes de ganancia",empresaDAO.getEmpresaMejorMargen());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Margenes de ganancia",processor.getEmpresaMejorMargen());
     	
 end
 
@@ -53,8 +57,8 @@ rule "Longevidad"
         respuesta: Respuesta();
         
     then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Longevidad",empresaDAO.getEmpresaMasAntigua());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Longevidad",processor.getEmpresaMasAntigua());
 end
 
 
@@ -70,8 +74,8 @@ rule "Maximo total pasivo"
         respuesta: Respuesta();
         
     then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Maximo total pasivo",empresaDAO.getEmpresaMaximoTotalPasivo());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Maximo total pasivo",processor.getEmpresaMaximoTotalPasivo());
 end
 
 //Busca la empresa con mas cantidad de cuentas
@@ -82,8 +86,8 @@ rule "Maxima cantidad cuentas"
         respuesta: Respuesta();
         
     then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Maxima cantidad cuentas",empresaDAO.getEmpresaMaximaCantidadCuentas());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Maxima cantidad cuentas",processor.getEmpresaMaximaCantidadCuentas());
 end
 
 //Busca la empresa con menor capital contable
@@ -94,6 +98,6 @@ rule "Menor capital contable"
         respuesta: Respuesta();
         
     then 
-    	EmpresaDAO empresaDAO = new EmpresaDAO();
-    	respuesta.agregar("Menor capital contable",empresaDAO.getEmpresaMenorCapitalContable());
+    	EmpresasProcessor processor = new EmpresasProcessor();
+    	respuesta.agregar("Menor capital contable",processor.getEmpresaMenorCapitalContable());
 end

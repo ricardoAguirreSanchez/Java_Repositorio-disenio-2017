@@ -1,7 +1,5 @@
 package com.utn.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.StringJoiner;
 

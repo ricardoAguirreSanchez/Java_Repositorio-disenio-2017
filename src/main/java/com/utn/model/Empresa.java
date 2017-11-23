@@ -3,7 +3,6 @@ package com.utn.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,6 +22,8 @@ public class Empresa {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
+
+
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -54,9 +55,16 @@ public class Empresa {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public Double getDeuda() {
+		return this.totalPasivo / this.capitalContable;
 	}
 }

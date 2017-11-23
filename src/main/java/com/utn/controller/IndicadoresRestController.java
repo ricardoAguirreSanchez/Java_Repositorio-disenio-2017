@@ -36,8 +36,8 @@ public class IndicadoresRestController {
         return false;
     }
 
-    @RequestMapping(value= "/indicadores/{cuentaId}/{cuentaValorId}/{indicadorId}", method= RequestMethod.GET)
-    public Double getEvaluacionIndicador(@PathVariable(value="cuentaId") final long cuentaId,
+    @RequestMapping(value= "/evaluar/indicadores", method= RequestMethod.GET)
+            public Double getEvaluacionIndicador(@PathVariable(value="cuentaId") final long cuentaId,
                                          @PathVariable(value="cuentaValorId") final long cuentaValorId,
                                 @PathVariable(value="indicadorId") final long indicadorId){
         return  indicadorService.evaluarIndicador(indicadorId, cuentaId, cuentaValorId);

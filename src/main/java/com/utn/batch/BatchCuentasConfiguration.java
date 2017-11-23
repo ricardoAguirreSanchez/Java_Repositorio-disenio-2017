@@ -1,15 +1,13 @@
 package com.utn.batch;
 
-import com.utn.files.FileAppender;
-import com.utn.files.FileSelector;
 import com.utn.model.CuentaValorToWrite;
 import com.utn.model.RowCuenta;
 import com.utn.processor.RowCuentaProcessor;
-import com.utn.repositorio.InputFiles;
 import com.utn.writer.CuentaValorWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.batch.core.*;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -28,13 +26,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import java.io.IOException;
-import java.util.Date;
 
 @Configuration
 @EnableBatchProcessing

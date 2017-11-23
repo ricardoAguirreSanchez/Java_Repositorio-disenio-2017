@@ -12,7 +12,7 @@ public class Metodologia {
 	private String nombre;
 	@ElementCollection
 	private List<String> condiciones;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 	

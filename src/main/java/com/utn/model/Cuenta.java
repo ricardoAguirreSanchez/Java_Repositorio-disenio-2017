@@ -1,9 +1,9 @@
 package com.utn.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.time.Year;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -19,7 +19,7 @@ public class Cuenta {
 	@JoinColumn(name = "empresa_id", referencedColumnName = "id")
 	private Empresa empresa;
 	@JsonIgnore
-	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cuenta", cascade = CascadeType.MERGE)
 	private List<CuentaValores> cuentaValores;
 
 	public long getId() {
@@ -58,4 +58,13 @@ public class Cuenta {
 				.toString();
 	}
 
+	public Double totalCostLastYears() {
+		return this.cuentaValores.stream().filter(cv -> cv.getFechaFin().getYear() + 10 <= Year.now().getValue())
+				.mapToDouble(CuentaValores::getCost).sum();
+	}
+
+	public Double totalRoiLastYears() {
+		return this.cuentaValores.stream().filter(cv -> cv.getFechaFin().getYear() + 10 <= Year.now().getValue())
+				.mapToDouble(CuentaValores::getRoi).sum();
+	}
 }

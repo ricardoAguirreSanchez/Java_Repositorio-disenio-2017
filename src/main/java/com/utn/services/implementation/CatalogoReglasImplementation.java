@@ -1,27 +1,25 @@
 package com.utn.services.implementation;
 
-import java.util.List;
-
+import com.utn.model.Regla;
+import com.utn.repositorio.Reglas;
+import com.utn.services.CatalogoReglasService;
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.utn.dao.CatalogoReglasDAO;
-import com.utn.dao.CuentaDAO;
-import com.utn.model.Cuenta;
-import com.utn.services.CatalogoReglasService;
+import java.util.List;
 
 public class CatalogoReglasImplementation implements CatalogoReglasService{
 
-    private final CatalogoReglasDAO catalogoReglas;
+    private final Reglas reglas;
 
     @Autowired
-    public CatalogoReglasImplementation(CatalogoReglasDAO catalogoReglas) {
-        this.catalogoReglas = catalogoReglas;
+    public CatalogoReglasImplementation(Reglas reglas) {
+        this.reglas = reglas;
     }
 
-
 	@Override
-	public List<String> getReglas() {
-		return catalogoReglas.getReglas();
+	public List<Regla> getReglas() {
+		 return Lists.newArrayList(reglas.findAll());
 	}
 
 }

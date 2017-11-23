@@ -1,12 +1,5 @@
 package com.utn.model;
 
-import com.utn.model.Cuenta;
-import com.utn.model.CuentaValores;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**

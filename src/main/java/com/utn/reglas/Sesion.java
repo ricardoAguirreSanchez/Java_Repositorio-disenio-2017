@@ -11,10 +11,10 @@ import java.io.Reader;
 
 public class Sesion {
 
-	public WorkingMemory iniciar()  {
+	public WorkingMemory iniciar() {
 
 		PackageBuilder packageBuilder = new PackageBuilder();
-
+		//TODO cambiar para apuntar a resources
 		String ruleFile = "/com/utn/reglas/Reglas.drl";
 		InputStream resourceAsStream = getClass().getResourceAsStream(ruleFile);
 
@@ -28,9 +28,7 @@ public class Sesion {
 		RuleBase ruleBase = RuleBaseFactory.newRuleBase();
 		ruleBase.addPackage(rulesPackage);
 
-		WorkingMemory workingMemory = ruleBase.newStatefulSession();
-
-		return workingMemory;
+		return ruleBase.newStatefulSession();
 	}
 
 }

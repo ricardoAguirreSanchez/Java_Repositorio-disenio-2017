@@ -4,7 +4,6 @@ import com.utn.model.Empresa;
 
 import java.util.HashMap;
 
-//Es necesario crear y usar esta clase en vez de mandar directamente el HashMap al drl pork no lo reconoce
 public class Respuesta {
 	private HashMap<String,Empresa> hash = new HashMap<>();
 	
