@@ -30,8 +30,8 @@ public class IndicadorServiceImplementation implements IndicadorService{
     }
 
     @Override
-    public List<Indicador> getIndicadores() {
-        return Lists.newArrayList(indicadores.findAll());
+    public List<Indicador> getIndicadores(long usuarioId) {
+        return Lists.newArrayList(indicadores.findByUsuarioId(usuarioId));
     }
 
     @Override

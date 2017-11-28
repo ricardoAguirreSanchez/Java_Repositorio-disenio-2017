@@ -22,6 +22,12 @@ app.controller('logInController', [ '$scope', '$http', function($scope, $http) {
 			password:'',
 	};
 	
+	$scope.init=function(){
+		$http.get('/logOut').success(function (data) {
+}).error(function(response){
+});
+	}
+	
 	$scope.logIn=function(user){
 		$http({
 			url:'/logIn',

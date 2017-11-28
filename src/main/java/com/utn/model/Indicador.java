@@ -18,6 +18,14 @@ public class Indicador {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+    
     public String getExpresion() {return expresion;}
 
     public void setExpresion(String expresion) {

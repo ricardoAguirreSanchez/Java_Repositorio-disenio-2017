@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface IndicadorService {
 
-    List<Indicador> getIndicadores();
+    List<Indicador> getIndicadores(long usuarioId);
 
     void setIndicador(String nombre, String indicador);
 

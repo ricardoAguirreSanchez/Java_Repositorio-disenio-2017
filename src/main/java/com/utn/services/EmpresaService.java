@@ -8,6 +8,6 @@ import java.util.List;
 @Service
 public interface EmpresaService {
 	
-	List<Empresa> getEmpresas();
+	List<Empresa> getEmpresas(long usuarioId);
 
 }

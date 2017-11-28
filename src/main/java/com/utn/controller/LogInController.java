@@ -1,17 +1,20 @@
 package com.utn.controller;
 
-import com.utn.services.UsuarioService;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import com.utn.model.Usuario;
+import com.utn.services.UsuarioService;
 
 @Controller
 public class LogInController {
@@ -25,10 +28,11 @@ public class LogInController {
 		response.setContentType("text/html");
 		String redireccion="/";
 		HttpSession sesion = request.getSession();
-
+		Usuario usuario = usuarioService.getUsuario(username, password);
 		//TODO validar usuario y contraseña para evitar "ataques"
-		if((usuarioService.getUsuario(username, password) != null) && sesion.getAttribute("usuario")==null){
+		if((usuario != null) && sesion.getAttribute("usuario")==null){
 			sesion.setAttribute("usuario", username);
+			sesion.setAttribute("usuarioId", usuario.getId());
 			redireccion="redirect:/index";
 		}
 		return redireccion;

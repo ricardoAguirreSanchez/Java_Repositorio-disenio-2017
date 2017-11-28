@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class CuentaRestController {
 
@@ -22,13 +25,15 @@ public class CuentaRestController {
     private CuentaValoresService cuentaValoresService;
 
     @RequestMapping(value= "/cuentas", method= RequestMethod.GET)
-    public List<Cuenta> getCuentas(){
-        return  cuentaService.getCuentas();
+    public List<Cuenta> getCuentas(HttpServletRequest request){
+    	HttpSession session=request.getSession();
+        return  cuentaService.getCuentas(empresaService.getEmpresas((long)session.getAttribute("usuarioId")));
     }
     
     @RequestMapping(value= "/empresas", method= RequestMethod.GET)
-    public List<Empresa> getEmpresas(){
-        return  empresaService.getEmpresas();
+    public List<Empresa> getEmpresas(HttpServletRequest request){
+    	HttpSession session=request.getSession();
+        return  empresaService.getEmpresas((long)session.getAttribute("usuarioId"));
     }
 
     @RequestMapping(value= "/cuentas/{id}", method= RequestMethod.GET)

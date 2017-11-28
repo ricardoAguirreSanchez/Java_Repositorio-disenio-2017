@@ -28,7 +28,8 @@ app.controller('logOutController', [ '$scope', function($scope) {
 
 	// href en el logo
 	$('.header_logo, .header_logout').click(function() {
-		window.location.href = '';
+		window.location.href = "logout";
+//		window.location.href = '';
 	});
 
 	// Botón para desplegar sidebar en tamaños de pantalla chicos
@@ -93,12 +94,12 @@ app.controller('usuarioHomeController', ['$scope','$rootScope','usuarioHomeFunct
 //		});
 	
 	}
+//	$httpProvider.defaults.headers.common['Pragma'] = 'no-cache';
+
 	$scope.logOut=function(){
-		$http({
-			url:'/logOut',
-			method: 'GET'
-				}).success(function (data) {
-					window.location.href="/";
+//		window.location.href="/logOut";
+		$http.get('/logOut').success(function (data) {
+					window.location.href="/logOut";
 					winwodw.location.assign(window.location.href)
 			alert("Se deslogeo correctamente");
 		}).error(function(response){

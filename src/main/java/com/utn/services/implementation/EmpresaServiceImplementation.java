@@ -18,8 +18,8 @@ public class EmpresaServiceImplementation implements EmpresaService {
         this.empresas = empresas;
     }
 
-    public List<Empresa> getEmpresas() {
-        return Lists.newArrayList(empresas.findAll());
+    public List<Empresa> getEmpresas(long usuarioId) {
+        return Lists.newArrayList(empresas.findByUsuarioId(usuarioId));
     }
     
 }

@@ -13,13 +13,15 @@ app.controller('cuentaPageController',['$rootScope','$scope', '$http','ngTablePa
          $scope.cuentaValores = null;
 
 
-        $scope.setClickedRow = function(index){
+        $scope.setClickedRow = function(index, id){
             $scope.indicadorSelected= $scope.indicadores[index];
             $scope.selectedRow = index;
+            $scope.indicadorId=id;
         }
-        $scope.setClickedRowCuenta = function(index){
+        $scope.setClickedRowCuenta = function(index, id){
             $scope.valorSelected= $scope.cuentaPage.valores[index];
             $scope.selectedRowCuenta = index;
+            $scope.cuentaId=id;
         }
 
         $rootScope.cargarCuentaValores = function(id) {
@@ -65,7 +67,24 @@ app.controller('cuentaPageController',['$rootScope','$scope', '$http','ngTablePa
                 });
             });
         }
+        $scope.aplicarIndicador=function(){
+        	var envio={
+        			indicadorId:$scope.indicadorId,
+        			cuentaId:$scope.cuentaId,
+        			valorCuentaId:$scope.cuentaValores[0].id	
+        	}
 
+        	$http({
+        		url:'/aplicarIndicadores',
+        		method:'POST',
+        		data:envio
+        		
+        	}).success(function(data){
+        		alert("Indicadores aplicados correctamente. Resultado final: "+data);
+        	}).error(function(data){
+        		alert("Ocurrio un error inesperado.")
+        	});
+        }
 
 }]);
 

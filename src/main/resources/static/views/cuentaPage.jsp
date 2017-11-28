@@ -17,7 +17,7 @@
                    class="table  table-bordered"
                    show-filter="false">
                 <tbody>
-                <tr ng-repeat="cuenta in cuentaPageTable.data" ng-class="{'selected':$index == selectedRowCuenta}" ng-click="setClickedRowCuenta($index)">
+                <tr ng-repeat="cuenta in cuentaPageTable.data" ng-class="{'selected':$index == selectedRowCuenta}" ng-click="setClickedRowCuenta($index,cuenta.id)">
                     <td data-title="'Gross Booking'"><div class="text-center">
                         <span>{{cuenta.grossBooking}}</span>
                     </div></td>
