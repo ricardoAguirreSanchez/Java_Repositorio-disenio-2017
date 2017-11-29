@@ -20,8 +20,12 @@ public class RowCuentaProcessor implements ItemProcessor<RowCuenta, CuentaValorT
 
     private static final Logger log = LoggerFactory.getLogger(RowCuentaProcessor.class);
 
+    private final CuentasValores cuentasValores;
+
     @Autowired
-    private CuentasValores cuentasValores;
+    public RowCuentaProcessor(CuentasValores cuentasValores) {
+        this.cuentasValores = cuentasValores;
+    }
 
     @Override
     public CuentaValorToWrite process(final RowCuenta row) throws Exception {

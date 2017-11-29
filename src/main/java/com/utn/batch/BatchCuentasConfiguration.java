@@ -44,6 +44,9 @@ public class BatchCuentasConfiguration {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
+    @Autowired
+    private RowCuentaProcessor rowCuentaProcessor;
+
 
 
     @Bean
@@ -84,7 +87,7 @@ public class BatchCuentasConfiguration {
 
     @Bean
     public RowCuentaProcessor processor() {
-        return new RowCuentaProcessor();
+        return rowCuentaProcessor;
     }
 
     @Bean

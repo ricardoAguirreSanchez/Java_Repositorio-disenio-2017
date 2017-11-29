@@ -40,6 +40,7 @@ public class EvaluacionIndicadores {
         ia.setCuenta(cuenta);
         ia.setIndicador(indicador);
         ia.setValor(indicadorCompiler.evaluarIndicador(indicador.getExpresion(), cv));
+        ia.setCuentaValor(cv);
         indicadoresAplicados.save(ia);
     }
 

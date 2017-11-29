@@ -48,6 +48,10 @@ public class Cuenta {
 
 	public List<CuentaValores> getCuentaValores() {return cuentaValores;}
 
+	public void setCuentaValores(List<CuentaValores> cuentaValores) {
+		this.cuentaValores = cuentaValores;
+	}
+
 	@Override
 	public String toString() {
 
